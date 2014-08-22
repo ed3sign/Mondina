@@ -13,7 +13,7 @@ type
     btnChiudi: TButton;
     qrProdotti: TADOQuery;
     dsProdotti: TDataSource;
-    cbTipologie: TComboBox;
+    cbStato: TComboBox;
     lblInfo1: TLabel;
     edtFiltroProd: TTextLabeledEdit;
     qrQuery: TADOQuery;
@@ -31,13 +31,14 @@ type
     btnAnnullaComando: TButton;
     btnOrdineRicevuto: TButton;
     Button1: TButton;
+    bntAnnullaOrdine: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dgProdottiCellClick(Column: TColumn);
     procedure edtFiltroProdKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnChiudiClick(Sender: TObject);
-    procedure cbTipologieChange(Sender: TObject);
+    procedure cbStatoChange(Sender: TObject);
     procedure btnRifornisciClick(Sender: TObject);
     procedure btnAddOrdClick(Sender: TObject);
     procedure btnOrdineRicevutoClick(Sender: TObject);
@@ -76,10 +77,8 @@ var
 
 procedure TfrmVisOrdiniMag.FormShow(Sender: TObject);
 begin
-  cbTipologie.Items.Add('Consegnato');
-  cbTipologie.Items.Add('Non Consegnato');
   LoadProdotti;
-  cbTipologie.SetFocus;
+  cbStato.SetFocus;
 
 end;
 
@@ -99,7 +98,16 @@ begin
     lblProdSel.Caption := qrProdotti.FieldByName('NomeProdotto').AsString;
     nome := qrProdotti.FieldByName('NomeProdotto').AsString;
     codProd := qrProdotti.FieldByName('CodiceAcquisto').AsString;
+    if (cbStato.ItemIndex = 0) then
+  begin
+    bntAnnullaOrdine.Visible := True;
+    btnOrdineRicevuto.Visible := False;
+  end;
+  if (cbStato.ItemIndex = 1) then
+  begin
+    bntAnnullaOrdine.Visible := False;
     btnOrdineRicevuto.Visible := True;
+  end;
     qrQuery.Active := False;
     end;
 end;
@@ -110,8 +118,10 @@ begin
   LoadProdotti;
 end;
 
-procedure TfrmVisOrdiniMag.cbTipologieChange(Sender: TObject);
+procedure TfrmVisOrdiniMag.cbStatoChange(Sender: TObject);
 begin
+  bntAnnullaOrdine.Visible := False;
+  btnOrdineRicevuto.Visible := False;
   LoadProdotti;
 end;
 
@@ -143,7 +153,7 @@ begin
   qrProdotti.Active := False;
   qrProdotti.SQL.Text := 'SELECT * ' +
                          'FROM [OrdiniMagazzino] ' +
-                         'WHERE [Consegnato] = ' + QuotedStr(cbTipologie.Items[cbTipologie.ItemIndex]);
+                         'WHERE [Consegnato] = ' + QuotedStr(cbStato.Items[cbStato.ItemIndex]);
 
     if edtFiltroProd.Text <> EMPTYSTR then
     qrProdotti.SQL.Text := qrProdotti.SQL.Text +

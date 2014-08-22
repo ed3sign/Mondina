@@ -103,19 +103,24 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
     object lblInfo1: TLabel
       Left = 16
       Top = 24
-      Width = 43
+      Width = 59
       Height = 13
-      Caption = 'Tipologia'
+      Caption = 'Stato Ordine'
     end
-    object cbTipologie: TComboBox
+    object cbStato: TComboBox
       Left = 16
       Top = 40
       Width = 145
       Height = 21
       Style = csDropDownList
       ItemHeight = 13
+      ItemIndex = 1
       TabOrder = 0
-      OnChange = cbTipologieChange
+      Text = 'Non Consegnato'
+      OnChange = cbStatoChange
+      Items.Strings = (
+        'Consegnato'
+        'Non Consegnato')
     end
     object edtFiltroProd: TTextLabeledEdit
       Left = 16
@@ -328,6 +333,15 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
     Caption = 'Magazzino'
     TabOrder = 5
     OnClick = Button1Click
+  end
+  object bntAnnullaOrdine: TButton
+    Left = 564
+    Top = 596
+    Width = 130
+    Height = 25
+    Caption = 'Annulla Ordine Ricevuto'
+    TabOrder = 6
+    Visible = False
   end
   object qrProdotti: TADOQuery
     Connection = dmCnt.AdoCnt
