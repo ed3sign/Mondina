@@ -1,6 +1,6 @@
 object frmVisOrdiniMag: TfrmVisOrdiniMag
   Left = 563
-  Top = 60
+  Top = 92
   BorderStyle = bsDialog
   Caption = 'Ordini Magazzino'
   ClientHeight = 629
@@ -257,71 +257,13 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
         end>
     end
   end
-  object gbAnnulla: TGroupBox
-    Left = 528
-    Top = 16
-    Width = 249
-    Height = 129
-    Caption = 'Annulla Ultimo Ordine Confermato'
-    TabOrder = 3
-    Visible = False
-    object lblInfo2: TLabel
-      Left = 16
-      Top = 32
-      Width = 65
-      Height = 13
-      Alignment = taRightJustify
-      AutoSize = False
-      Caption = 'Nome'
-    end
-    object lblInfo5: TLabel
-      Left = 16
-      Top = 56
-      Width = 65
-      Height = 13
-      Alignment = taRightJustify
-      AutoSize = False
-      Caption = 'Qt'#224' Aggiunta'
-    end
-    object Bevel1: TBevel
-      Left = 16
-      Top = 72
-      Width = 217
-      Height = 17
-      Shape = bsBottomLine
-    end
-    object lblNomeProd: TLabel
-      Left = 88
-      Top = 32
-      Width = 145
-      Height = 13
-      AutoSize = False
-      Caption = 'lblNomeProd'
-    end
-    object lblQtaOrdinata: TLabel
-      Left = 88
-      Top = 56
-      Width = 67
-      Height = 13
-      Caption = 'lblQtaOrdinata'
-    end
-    object btnAnnullaComando: TButton
-      Left = 160
-      Top = 96
-      Width = 75
-      Height = 25
-      Caption = 'Annulla'
-      TabOrder = 0
-      OnClick = btnAnnullaComandoClick
-    end
-  end
   object btnOrdineRicevuto: TButton
     Left = 596
     Top = 596
     Width = 100
     Height = 25
     Caption = 'Ordine Ricevuto'
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
     OnClick = btnOrdineRicevutoClick
   end
@@ -331,7 +273,7 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
     Width = 75
     Height = 25
     Caption = 'Magazzino'
-    TabOrder = 5
+    TabOrder = 4
     OnClick = Button1Click
   end
   object bntAnnullaOrdine: TButton
@@ -340,8 +282,9 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
     Width = 130
     Height = 25
     Caption = 'Annulla Ordine Ricevuto'
-    TabOrder = 6
+    TabOrder = 5
     Visible = False
+    OnClick = bntAnnullaOrdineClick
   end
   object qrProdotti: TADOQuery
     Connection = dmCnt.AdoCnt

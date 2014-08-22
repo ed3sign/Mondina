@@ -22,13 +22,6 @@ type
     dgProdotti: TDBGrid;
     lblInfo3: TLabel;
     lblProdSel: TLabel;
-    gbAnnulla: TGroupBox;
-    lblInfo2: TLabel;
-    lblInfo5: TLabel;
-    Bevel1: TBevel;
-    lblNomeProd: TLabel;
-    lblQtaOrdinata: TLabel;
-    btnAnnullaComando: TButton;
     btnOrdineRicevuto: TButton;
     Button1: TButton;
     bntAnnullaOrdine: TButton;
@@ -44,6 +37,7 @@ type
     procedure btnOrdineRicevutoClick(Sender: TObject);
     procedure btnAnnullaComandoClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure bntAnnullaOrdineClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -212,9 +206,6 @@ procedure TfrmVisOrdiniMag.btnOrdineRicevutoClick(Sender: TObject);
 var
   tot, qtaOrd, qtaTot : Integer;
 begin
-  gbAnnulla.Visible := True;
-  lblNomeProd.Caption := qrProdotti.FieldByName('NomeProdotto').AsString;
-  lblQtaOrdinata.Caption := qrProdotti.FieldByName('qtaOrdinata').AsString;
   qrQuery.SQL.Text := 'UPDATE [OrdiniMagazzino] ' +
                         'SET [Consegnato] = "Consegnato"'+
                         'WHERE [CodiceAcquisto] = "' + codProd + '" AND [NomeProdotto] = "' + nome + '";';
@@ -238,6 +229,29 @@ procedure TfrmVisOrdiniMag.Button1Click(Sender: TObject);
 begin
   frmVisOrdiniMag.Close;
   frmVisMagazzino.Show;
+end;
+
+procedure TfrmVisOrdiniMag.bntAnnullaOrdineClick(Sender: TObject);
+  var
+    tot, qtaOrd, qtaTot : Integer;
+begin
+  qrQuery.SQL.Text := 'UPDATE [OrdiniMagazzino] ' +
+                        'SET [Consegnato] = "Non Consegnato"'+
+                        'WHERE [CodiceAcquisto] = "' + codProd + '" AND [NomeProdotto] = "' + nome + '";';
+  qrQuery.ExecSQL;
+
+  qrQuery.SQL.Text := 'SELECT [qtaOrdinata] FROM [OrdiniMagazzino] WHERE [CodiceAcquisto] = "' + codProd + '" AND [NomeProdotto] = "' + nome + '";';
+  qrQuery.Open;
+  qtaOrd := qrQuery.Fields[0].AsInteger;
+  qrQuery.SQL.Text := 'SELECT [QtaTotale] FROM [Prodotti] WHERE [Nome] = "' + nome + '";';
+  qrQuery.Open;
+  qtaTot := qrQuery.Fields[0].AsInteger;
+  tot :=  qtaTot - qtaOrd;
+
+  qrQuery.SQL.Text := 'UPDATE [Prodotti] SET [QtaTotale]= ' + IntToStr(tot) + ' WHERE [Nome] = "' + nome + '";';
+  qrQuery.ExecSQL;
+
+  LoadProdotti;
 end;
 
 end.
