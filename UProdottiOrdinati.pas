@@ -1,0 +1,145 @@
+unit UProdottiOrdinati;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, TextLabeledEdit, Grids, DBGrids, DB, ADODB;
+
+type
+  TfrmVisProdottiOrdinati = class(TForm)
+    gbInfo: TGroupBox;
+    dgProdotti: TDBGrid;
+    gbFiltro: TGroupBox;
+    lblInfo1: TLabel;
+    cbAnni: TComboBox;
+    img1: TImage;
+    qrProdotti: TADOQuery;
+    dsProdotti: TDataSource;
+    qrQuery: TADOQuery;
+    btnChiudi: TButton;
+    btnElimina: TButton;
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnEliminaClick(Sender: TObject);
+    procedure btnChiudiClick(Sender: TObject);
+    procedure cbAnniChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure LoadProdotti;
+    procedure LoadAnni;
+    procedure CancellaRecord(Anno: string);
+  end;
+
+var
+  frmVisProdottiOrdinati: TfrmVisProdottiOrdinati;
+
+implementation
+
+uses dmConnection, UMessaggi;
+
+{$R *.dfm}
+
+{ **************************************************************************** }
+{ *** Finestra *************************************************************** }
+
+procedure TfrmVisProdottiOrdinati.FormShow(Sender: TObject);
+begin
+  LoadAnni;
+  LoadProdotti;
+  cbAnni.SetFocus;
+end;
+
+procedure TfrmVisProdottiOrdinati.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  qrProdotti.Active := False;
+end;
+
+{ **************************************************************************** }
+{ *** Componenti ************************************************************* }
+
+procedure TfrmVisProdottiOrdinati.btnEliminaClick(Sender: TObject);
+var
+  ris: Integer;
+  testo: string;
+begin
+  if cbAnni.ItemIndex = 0 then testo := MSG_ELIMINA_PRODOTTI_ORDINATI_TUTTI
+  else testo := MSG_ELIMINA_PRODOTTI_ORDINATI_ANNO;
+  ris := MessageDlg(testo, mtWarning, [mbYes, mbNo], 0);
+  if ris = mrYes then
+  begin
+    CancellaRecord(cbAnni.Items[cbAnni.ItemIndex]);
+    LoadAnni;
+    LoadProdotti;
+    ShowMessage(MSG_PRODOTTI_ORDINATI_ELIMINATI);    
+  end;
+end;
+
+procedure TfrmVisProdottiOrdinati.btnChiudiClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmVisProdottiOrdinati.cbAnniChange(Sender: TObject);
+begin
+  LoadProdotti;
+end;
+
+{ **************************************************************************** }
+{ *** Load ******************************************************************* }
+
+procedure TfrmVisProdottiOrdinati.LoadAnni;
+begin
+  cbAnni.Clear;
+  cbAnni.Items.Add(' ');
+  qrQuery.SQL.Text := 'SELECT DISTINCT [Anno] FROM [Prodotti_Ordinati] ORDER BY [Anno]';
+  qrQuery.Active := True;
+  qrQuery.First;
+  while not qrQuery.Eof do
+  begin
+    cbAnni.Items.Add(qrQuery.FieldByName('Anno').AsString);
+    qrQuery.Next;
+  end;
+  qrQuery.Active := False;
+  cbAnni.ItemIndex := 0;
+end;
+
+procedure TfrmVisProdottiOrdinati.LoadProdotti;
+var Anno: string;
+begin
+  qrProdotti.Active := False;
+  qrProdotti.SQL.Text := 'SELECT [Prodotti_Ordinati].[Anno], [Prodotti].[Nome], [Prodotti].[Fornitore], [Prodotti_Ordinati].[QtaOrdinata], ' +
+                                '[Prodotti_Ordinati].[QtaOrdinata] * [Prodotti].[CostoUnitario] AS [QtaSpesa] ' +
+                         'FROM [Prodotti] INNER JOIN [Prodotti_Ordinati] ' +
+                              'ON [Prodotti].[Codice] = [Prodotti_Ordinati].[CodProdotto] ' +
+                         'WHERE (1 = 1) ';
+
+  if cbAnni.ItemIndex <> 0 then
+  begin
+    Anno := cbAnni.Items[cbAnni.ItemIndex];
+    qrProdotti.SQL.Text := qrProdotti.SQL.Text + 'AND [Prodotti_Ordinati].[Anno] = ' + Anno + ' ';
+  end;
+  qrProdotti.SQL.Text := qrProdotti.SQL.Text + 'ORDER BY [Fornitore], [Nome]';
+  qrProdotti.Active := True;
+end;
+
+{ **************************************************************************** }
+{ *** Gestione *************************************************************** }
+
+procedure TfrmVisProdottiOrdinati.CancellaRecord(Anno: string);
+begin
+  try
+    if anno = ' ' then
+      qrQuery.SQL.Text := 'DELETE FROM [Prodotti_Ordinati]'
+    else
+      qrQuery.SQL.Text := 'DELETE FROM [Prodotti_Ordinati] WHERE [Anno] = ' + Anno;
+    qrQuery.ExecSQL;
+  except
+    ShowMessage(MSG_ERRORE_SCRITTURA_DB);
+  end;
+end;
+
+end.
