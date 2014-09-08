@@ -9,7 +9,7 @@ uses
   UDatiPersonali in 'UDatiPersonali.pas' {frmVisDatiPersonali},
   UVisCassetti in 'UVisCassetti.pas' {frmVisCassetti},
   UHashTable in 'UHashTable.pas',
-  UCreaProdotto in 'UCreaProdotto.pas' {frmCreaProdotto},
+  UCreaOrdine in 'UCreaOrdine.pas' {frmCreaOrdine},
   UMessaggi in 'UMessaggi.pas',
   UCreaUtente in 'UCreaUtente.pas' {frmCreaUtente},
   UAbout in 'UAbout.pas' {frmAbout},
@@ -61,7 +61,7 @@ begin
   Application.CreateForm(TfrmLoginModAccesso, frmLoginModAccesso);
   Application.CreateForm(TfrmVisDatiPersonali, frmVisDatiPersonali);
   Application.CreateForm(TfrmVisCassetti, frmVisCassetti);
-  Application.CreateForm(TfrmCreaProdotto, frmCreaProdotto);
+  Application.CreateForm(TfrmCreaOrdine, frmCreaOrdine);
   Application.CreateForm(TfrmCreaUtente, frmCreaUtente);
   Application.CreateForm(TfrmAbout, frmAbout);
   Application.CreateForm(TfrmAssociaUtentiCassetti, frmAssociaUtentiCassetti);

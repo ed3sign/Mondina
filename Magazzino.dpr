@@ -49,7 +49,8 @@ uses
   UVisProdottiRichiestiStudi in 'UVisProdottiRichiestiStudi.pas' {frmVisProdottiRichiestiStudi},
   UProdottiRichiestiStudi in 'UProdottiRichiestiStudi.pas' {frmProdottiRichiestiStudi},
   UReportProdottiRichiestiStudi in 'UReportProdottiRichiestiStudi.pas' {frmReportProdottiRichiestiStudi},
-  UVisMagazzino in 'UVisMagazzino.pas' {frmVisMagazzino};
+  UVisMagazzino in 'UVisMagazzino.pas' {frmVisMagazzino},
+  UCreaProdotto in 'UCreaProdotto.pas' {frmCreaProdotto};
 
 {$R *.res}
 
@@ -100,6 +101,7 @@ begin
   Application.CreateForm(TfrmProdottiRichiestiStudi, frmProdottiRichiestiStudi);
   Application.CreateForm(TfrmReportProdottiRichiestiStudi, frmReportProdottiRichiestiStudi);
   Application.CreateForm(TfrmVisMagazzino, frmVisMagazzino);
+  Application.CreateForm(TfrmCreaProdotto, frmCreaProdotto);
   Application.Run;
 end.
 
