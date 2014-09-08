@@ -38,6 +38,7 @@ type
     procedure LoadTipologie;
     procedure LoadFornitori;
     procedure AddProdotto;
+    function GetAnnoStr: string;
   end;
 
 var
@@ -139,6 +140,14 @@ end;
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
+function TfrmCreaOrdine.GetAnnoStr: string;
+var
+  myYear, myMonth, myDay : Word;
+begin
+  DecodeDate(Date, myYear, myMonth, myDay);
+  GetAnnoStr := IntToStr(myYear);
+end;
+
 procedure TfrmCreaOrdine.AddProdotto;
 var
   NumProdPerConf, QtaOrd: Integer;
@@ -164,7 +173,7 @@ begin
     tblProdotti.FieldByName('CostoConfezione').AsFloat := CostoConf;
     tblProdotti.FieldByName('Sconto').AsFloat := Sconto;
     tblProdotti.FieldByName('IVA').AsFloat := IVA;
-    tblProdotti.FieldByName('Anno').AsInteger := 2014;
+    tblProdotti.FieldByName('Anno').AsInteger := StrToInt(GetAnnoStr);
     tblProdotti.FieldByName('CostoUnitario').AsFloat := CostoUni;
     tblProdotti.FieldByName('qtaOrdinata').AsInteger := QtaOrd;
     tblProdotti.Post;

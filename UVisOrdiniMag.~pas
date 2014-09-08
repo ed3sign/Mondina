@@ -236,7 +236,7 @@ procedure TfrmVisOrdiniMag.bntAnnullaOrdineClick(Sender: TObject);
     tot, qtaOrd, qtaTot : Integer;
 begin
   qrQuery.SQL.Text := 'UPDATE [OrdiniMagazzino] ' +
-                        'SET [Consegnato] = "Consegnato"'+
+                        'SET [Consegnato] = "Non Consegnato"'+
                         'WHERE [CodiceAcquisto] = "' + codProd + '" AND [NomeProdotto] = "' + nome + '";';
   qrQuery.ExecSQL;
 

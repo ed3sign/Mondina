@@ -53,7 +53,8 @@ var
 implementation
 
 uses dmConnection, UMessaggi, URifornisciCassetti, UNuovoOrdine,
-  UCreaOrdine;
+  UCreaOrdine,
+  UVisOrdiniMag;
 
 {$R *.dfm}
 

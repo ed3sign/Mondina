@@ -1,6 +1,6 @@
 object frmVisOrdiniMag: TfrmVisOrdiniMag
-  Left = 563
-  Top = 92
+  Left = 400
+  Top = 83
   BorderStyle = bsDialog
   Caption = 'Ordini Magazzino'
   ClientHeight = 629
@@ -258,7 +258,7 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
     end
   end
   object btnOrdineRicevuto: TButton
-    Left = 596
+    Left = 484
     Top = 596
     Width = 100
     Height = 25
@@ -285,6 +285,16 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
     TabOrder = 5
     Visible = False
     OnClick = bntAnnullaOrdineClick
+  end
+  object btnDelOrd: TButton
+    Left = 593
+    Top = 596
+    Width = 100
+    Height = 25
+    Caption = 'Cancella Ordine'
+    TabOrder = 6
+    Visible = False
+    OnClick = btnDelOrdClick
   end
   object qrProdotti: TADOQuery
     Connection = dmCnt.AdoCnt

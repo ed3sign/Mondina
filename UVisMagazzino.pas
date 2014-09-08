@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, NumberEdit, StdCtrls, Grids, DBGrids, TextEdit, ExtCtrls, DB,
-  ADODB, TextLabeledEdit;
+  ADODB, TextLabeledEdit, NumberLabeledEdit;
 
 type
   TfrmVisMagazzino = class(TForm)
@@ -24,7 +24,10 @@ type
     lblInfo3: TLabel;
     lblProdSel: TLabel;
     btnAddOrd: TButton;
-    Button1: TButton;
+    btnChageForm: TButton;
+    gbSottrai: TGroupBox;
+    ntbSottrai: TNumberLabeledEdit;
+    btnOk: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dgProdottiCellClick(Column: TColumn);
@@ -34,7 +37,8 @@ type
     procedure cbTipologieChange(Sender: TObject);
     procedure btnRifornisciClick(Sender: TObject);
     procedure btnAddOrdClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnChageFormClick(Sender: TObject);
+    procedure btnOkClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -85,6 +89,7 @@ begin
   begin
     lblProdSel.Caption := qrProdotti.FieldByName('Nome').AsString;
     btnAddOrd.Visible := True;
+    gbSottrai.Visible := True;
   end;
 end;
 
@@ -208,10 +213,42 @@ begin
   qrQuery.ExecSQL;
 end;
 
-procedure TfrmVisMagazzino.Button1Click(Sender: TObject);
+procedure TfrmVisMagazzino.btnChageFormClick(Sender: TObject);
 begin
   frmVisMagazzino.Close;
   frmVisOrdiniMag.Show;
+end;
+
+procedure TfrmVisMagazzino.btnOkClick(Sender: TObject);
+var
+  buttonSelected : Integer;
+  qta : Integer;
+  qtaMag : Integer;
+  totsot: Integer;
+  nome : String;
+begin
+  qtaMag := qrProdotti.FieldByName('QtaTotale').AsInteger;
+  nome := qrProdotti.FieldByName('Nome').AsString;
+  qta := StrToIntDef(ntbSottrai.Text, 0);
+  totsot := qtaMag-qta;
+
+  if (ntbSottrai.Text=EMPTYSTR) Or (qta<=0) then
+    buttonSelected := MessageDlg('La Quantità indicata non è valida!',mtWarning,
+                              [mbOk], 0)
+  else
+  // Show a custom dialog
+  buttonSelected := MessageDlg('Vuoi Sottrarre '+IntToStr(qta)+' '+nome+'/i?',mtConfirmation,
+                              [mbYes,mbCancel], 0);
+
+  // Show the button type selected
+  if buttonSelected = mrYes    then
+    qrQuery.SQL.Text := 'UPDATE [Prodotti] ' +
+                        'SET [QtaTotale] = '+IntToStr(totsot)+
+                        ' WHERE [Nome] = "' + nome + '";';
+  qrQuery.ExecSQL;
+  LoadProdotti;
+
+
 end;
 
 end.
