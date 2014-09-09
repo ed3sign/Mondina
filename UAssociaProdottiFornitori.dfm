@@ -1,8 +1,8 @@
-object frmAssociaProdottiCassetti: TfrmAssociaProdottiCassetti
-  Left = 393
-  Top = 141
+object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
+  Left = 460
+  Top = 53
   BorderStyle = bsDialog
-  Caption = 'Associa Prodotti - Cassetti'
+  Caption = 'Associa Prodotti - Fornitori'
   ClientHeight = 754
   ClientWidth = 953
   Color = clBtnFace

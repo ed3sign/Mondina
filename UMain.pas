@@ -61,6 +61,7 @@ type
     mmVisProdRichiestiStudi: TMenuItem;
     mmProdRichiestiStudi: TMenuItem;
     mmVisOrdiniMag: TMenuItem;
+    mmProdottiFornitori: TMenuItem;
     procedure mmLoginClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure mmEsciClick(Sender: TObject);
@@ -97,6 +98,7 @@ type
     procedure mmVisProdRichiestiStudiClick(Sender: TObject);
     procedure mmProdRichiestiStudiClick(Sender: TObject);
     procedure mmVisOrdiniMagClick(Sender: TObject);
+    procedure mmProdottiFornitoriClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -121,7 +123,8 @@ uses ULogin, UDatiPersonali, UVisCassetti, UCreaProdotto,
   UVisProdottiCassetti, UVisProdottiPerTipologia, UVisProdottiOrdinati,
   UReportProdottiSottoSoglia, UVisProdottiPerAssistente,
   UVisProdottiPersiSelPagina, UVisProdottiPersi, UProdottiOrdinati,
-  UVisProdottiRichiestiStudi, UProdottiRichiestiStudi, UVisOrdiniMag;
+  UVisProdottiRichiestiStudi, UProdottiRichiestiStudi, UVisOrdiniMag,
+  UAssociaProdottiFornitori;
 
 {$R *.dfm}
 
@@ -359,6 +362,11 @@ end;
 procedure TfrmMain.mmAssistentiSostitutiClick(Sender: TObject);
 begin
   frmAssociaAssistentiSostituti.ShowModal;
+end;
+
+procedure TfrmMain.mmProdottiFornitoriClick(Sender: TObject);
+begin
+  frmAssociaProdottiFornitori.ShowModal;
 end;
 
 { **************************************************************************** }

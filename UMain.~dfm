@@ -1,6 +1,6 @@
 object frmMain: TfrmMain
-  Left = 256
-  Top = 154
+  Left = 802
+  Top = 196
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Magazzino - Utente Non Autenticato'
@@ -183,6 +183,11 @@ object frmMain: TfrmMain
         Caption = 'Prodotti - Cassetti'
         ImageIndex = 2
         OnClick = mmProdottiCassettiClick
+      end
+      object mmProdottiFornitori: TMenuItem
+        Caption = 'Prodotti - Fornitori'
+        ImageIndex = 2
+        OnClick = mmProdottiFornitoriClick
       end
     end
     object mmReport: TMenuItem

@@ -25,6 +25,7 @@ type
     btnOrdineRicevuto: TButton;
     Button1: TButton;
     bntAnnullaOrdine: TButton;
+    btnDelOrd: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dgProdottiCellClick(Column: TColumn);
@@ -38,6 +39,7 @@ type
     procedure btnAnnullaComandoClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure bntAnnullaOrdineClick(Sender: TObject);
+    procedure btnDelOrdClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,6 +53,7 @@ type
 var
   frmVisOrdiniMag: TfrmVisOrdiniMag;
   codProd : string;
+  ID : Integer;
   nome : string;
   newTotal : Integer;
 
@@ -89,6 +92,7 @@ procedure TfrmVisOrdiniMag.dgProdottiCellClick(Column: TColumn);
 begin
   if not qrProdotti.IsEmpty then
   begin
+    ID := qrProdotti.FieldByName('ID').AsInteger;
     lblProdSel.Caption := qrProdotti.FieldByName('NomeProdotto').AsString;
     nome := qrProdotti.FieldByName('NomeProdotto').AsString;
     codProd := qrProdotti.FieldByName('CodiceAcquisto').AsString;
@@ -96,11 +100,13 @@ begin
   begin
     bntAnnullaOrdine.Visible := True;
     btnOrdineRicevuto.Visible := False;
+    btnDelOrd.Visible := False;
   end;
   if (cbStato.ItemIndex = 1) then
   begin
     bntAnnullaOrdine.Visible := False;
     btnOrdineRicevuto.Visible := True;
+    btnDelOrd.Visible := True;
   end;
     qrQuery.Active := False;
     end;
@@ -116,6 +122,7 @@ procedure TfrmVisOrdiniMag.cbStatoChange(Sender: TObject);
 begin
   bntAnnullaOrdine.Visible := False;
   btnOrdineRicevuto.Visible := False;
+  btnDelOrd.Visible := False;
   LoadProdotti;
 end;
 
@@ -251,6 +258,13 @@ begin
   qrQuery.SQL.Text := 'UPDATE [Prodotti] SET [QtaTotale]= ' + IntToStr(tot) + ' WHERE [Nome] = "' + nome + '";';
   qrQuery.ExecSQL;
 
+  LoadProdotti;
+end;
+
+procedure TfrmVisOrdiniMag.btnDelOrdClick(Sender: TObject);
+begin
+  qrQuery.SQL.Text := 'DELETE FROM [OrdiniMagazzino] WHERE [ID] = ' +IntToStr(ID)+ ';';
+  qrQuery.ExecSQL;
   LoadProdotti;
 end;
 

@@ -184,6 +184,11 @@ object frmMain: TfrmMain
         ImageIndex = 2
         OnClick = mmProdottiCassettiClick
       end
+      object mmProdottiFornitori: TMenuItem
+        Caption = 'Prodotti - Fornitori'
+        ImageIndex = 2
+        OnClick = mmProdottiFornitoriClick
+      end
     end
     object mmReport: TMenuItem
       Caption = 'Report'

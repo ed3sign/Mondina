@@ -1,6 +1,6 @@
 object frmAssociaProdottiCassetti: TfrmAssociaProdottiCassetti
-  Left = 391
-  Top = 209
+  Left = 544
+  Top = 67
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Cassetti'
   ClientHeight = 754
