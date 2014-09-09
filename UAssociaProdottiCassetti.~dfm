@@ -1,6 +1,6 @@
 object frmAssociaProdottiCassetti: TfrmAssociaProdottiCassetti
-  Left = 391
-  Top = 209
+  Left = 402
+  Top = 31
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Cassetti'
   ClientHeight = 754
@@ -132,6 +132,13 @@ object frmAssociaProdottiCassetti: TfrmAssociaProdottiCassetti
       Columns = <
         item
           Expanded = False
+          FieldName = 'CodiceAcquisto'
+          Title.Caption = 'Codice Acquisto'
+          Width = 100
+          Visible = True
+        end
+        item
+          Expanded = False
           FieldName = 'Nome'
           Width = 200
           Visible = True
@@ -204,6 +211,13 @@ object frmAssociaProdottiCassetti: TfrmAssociaProdottiCassetti
       TitleFont.Style = []
       OnCellClick = dgProdottiCellClick
       Columns = <
+        item
+          Expanded = False
+          FieldName = 'CodiceAcquisto'
+          Title.Caption = 'Codice Acquisto'
+          Width = 100
+          Visible = True
+        end
         item
           Expanded = False
           FieldName = 'Nome'
