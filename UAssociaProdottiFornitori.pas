@@ -37,6 +37,10 @@ type
     Label2: TLabel;
     lblProdCassSel: TLabel;
     edtQtaMax: TTextEdit;
+    gbQtaMaxProdEdit: TGroupBox;
+    Bevel1: TBevel;
+    btnEdit: TButton;
+    edtQtaMaxEdit: TTextEdit;
     procedure FormShow(Sender: TObject);
     procedure lbCassettiClick(Sender: TObject);
     procedure edtFiltroProdKeyUp(Sender: TObject; var Key: Word;
@@ -48,6 +52,7 @@ type
     procedure btnInserisciClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbTipologieChange(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,6 +64,7 @@ type
     procedure LoadProdottiFornitore;
     procedure LoadProdotti;
     procedure InserisciProdotto;
+    procedure ModificaProdotto;
     procedure EliminaProdotto;
     function EsisteProdotto(Fornitore, Nome: string): Boolean;
   end;
@@ -103,19 +109,41 @@ begin
   LoadProdottiFornitore;
   btnElimina.Enabled := False;
   gbQtaMaxProd.Visible := False;
+  gbQtaMaxProdEdit.Visible := False;
   lblProdSel.Caption := EMPTYSTR;
   lblProdCassSel.Caption := EMPTYSTR;
 end;
 
 procedure TfrmAssociaProdottiFornitori.dgProdottiCellClick(Column: TColumn);
+var
+Cod : string;
 begin
   if (not qrProdotti.IsEmpty) and (lblCassettoSel.Caption <> EMPTYSTR) then
   begin
     lblProdSel.Caption := qrProdotti.FieldByName('Nome').AsString;
-    btnElimina.Enabled := False;
-    edtQtaMax.Text := EMPTYSTR;
-    lblProdCassSel.Caption := EMPTYSTR;
-    gbQtaMaxProd.Visible := True;
+    qrQuery.SQL.Text := 'SELECT [Fornitori_Prodotti].[CodiceAcquisto] ' +
+                      ' FROM [Fornitori_Prodotti] INNER JOIN [Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto] ' +
+                      'WHERE [Prodotti].[Nome] = ' + QuotedStr(lblProdSel.Caption) + ' AND ' +
+                      '[Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(lblCassettoSel.Caption) + ';';
+    qrQuery.Open;
+
+    Cod := qrQuery.Fields[0].AsString;
+    if EsisteProdotto(lblCassettoSel.Caption, lblProdSel.Caption) then
+    begin
+      btnElimina.Enabled := False;
+      edtQtaMaxEdit.Text := Cod;
+      lblProdCassSel.Caption := EMPTYSTR;
+      gbQtaMaxProdEdit.Visible := True;
+      gbQtaMaxProd.Visible := False;
+    end
+    else
+    begin
+      btnElimina.Enabled := False;
+      edtQtaMax.Text := EMPTYSTR;
+      lblProdCassSel.Caption := EMPTYSTR;
+      gbQtaMaxProd.Visible := True;
+      gbQtaMaxProdEdit.Visible := False;
+    end
   end;
 end;
 
@@ -127,6 +155,7 @@ begin
     lblProdCassSel.Caption := qrProdCassetto.FieldByName('Nome').AsString;
     btnElimina.Enabled := True;
     gbQtaMaxProd.Visible := False;
+    gbQtaMaxProdEdit.Visible := False;
     lblProdSel.Caption := EMPTYSTR;
   end;
 end;
@@ -161,20 +190,39 @@ var
   nome, codAcquisto: string;
 begin
   nome := qrProdotti.FieldByName('Nome').AsString;
-  if EsisteProdotto(lblCassettoSel.Caption, nome) then
-  begin
-    ShowMessage(MSG_PRODOTTO_ESISTENTE);
-    gbQtaMaxProd.Visible := False;
-    lblProdSel.Caption := EMPTYSTR;
-  end
+  //if EsisteProdotto(lblCassettoSel.Caption, nome) then
+  //begin
+    //ShowMessage(MSG_PRODOTTO_ESISTENTE);
+    //gbQtaMaxProd.Visible := False;
+    //lblProdSel.Caption := EMPTYSTR;
+  //end
 
-  else
+  //else
   begin
     if Trim(edtQtaMax.Text) = EMPTYSTR then ShowMessage(MSG_INSERIRE_DATI)
     else
     begin
       codAcquisto := edtQtaMax.Text;
       InserisciProdotto;
+      LoadProdotti;
+      LoadProdottiFornitore;
+      lblProdSel.Caption := EMPTYSTR;
+    end;
+  end;
+end;
+
+
+procedure TfrmAssociaProdottiFornitori.btnEditClick(Sender: TObject);
+var
+  nome, codAcquisto: string;
+begin
+  nome := qrProdotti.FieldByName('Nome').AsString;
+  begin
+    if Trim(edtQtaMaxEdit.Text) = EMPTYSTR then ShowMessage(MSG_INSERIRE_DATI)
+    else
+    begin
+      codAcquisto := edtQtaMaxEdit.Text;
+      ModificaProdotto;
       LoadProdotti;
       LoadProdottiFornitore;
       lblProdSel.Caption := EMPTYSTR;
@@ -335,7 +383,20 @@ begin
   try
     CodProd := qrProdotti.FieldByName('Codice').AsString;
     qrQuery.SQL.Text := 'INSERT INTO [Fornitori_Prodotti] ([CodiceAcquisto], [Fornitore], [IdProdotto]) ' +
-                        'VALUES (' + QuotedStr(edtQtaMax.Text) +', ' + QuotedStr(lbCassetti.Items[lbCassetti.ItemIndex]) + ', ' + codProd + ')';
+                        'VALUES (' + QuotedStr(edtQtaMax.Text) +', ' + QuotedStr(lbCassetti.Items[lbCassetti.ItemIndex]) + ', ' + CodProd + ')';
+    qrQuery.ExecSQL;
+  except
+    ShowMessage(MSG_ERRORE_SCRITTURA_DB);
+  end;
+end;
+
+procedure TfrmAssociaProdottiFornitori.ModificaProdotto;
+var CodProd: string;
+begin
+  try
+    CodProd := qrProdotti.FieldByName('Codice').AsString;
+    qrQuery.SQL.Text := 'UPDATE [Fornitori_Prodotti] SET [CodiceAcquisto]=' + QuotedStr(edtQtaMaxEdit.Text) +
+                        'WHERE ([Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(lblCassettoSel.Caption) + ' AND [Fornitori_Prodotti].[IdProdotto] = ' + CodProd + ');';
     qrQuery.ExecSQL;
   except
     ShowMessage(MSG_ERRORE_SCRITTURA_DB);

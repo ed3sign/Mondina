@@ -222,12 +222,12 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
       Top = 24
       Width = 145
       Height = 129
-      Caption = 'Codice Acquisto'
+      Caption = 'Codice d'#39'Acquisto'
       TabOrder = 2
       object Bevel2: TBevel
         Left = 16
         Top = 56
-        Width = 113
+        Width = 121
         Height = 17
         Shape = bsBottomLine
       end
