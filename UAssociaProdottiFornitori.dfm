@@ -1,9 +1,9 @@
 object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
-  Left = 460
-  Top = 53
+  Left = 256
+  Top = 29
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Fornitori'
-  ClientHeight = 754
+  ClientHeight = 745
   ClientWidth = 953
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -98,7 +98,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
     Top = 16
     Width = 665
     Height = 281
-    Caption = 'Prodotti nel Cassetto'
+    Caption = 'Prodotti del Fornitore'
     TabOrder = 1
     object Label2: TLabel
       Left = 16
@@ -132,6 +132,13 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
       Columns = <
         item
           Expanded = False
+          FieldName = 'CodiceAcquisto'
+          Title.Caption = 'Codice Acquisto'
+          Width = 95
+          Visible = True
+        end
+        item
+          Expanded = False
           FieldName = 'Nome'
           Width = 200
           Visible = True
@@ -139,20 +146,6 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
         item
           Expanded = False
           FieldName = 'Tipologia'
-          Width = 100
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'QtaTotale'
-          Title.Caption = 'Qt'#224' Totale Cassetto'
-          Width = 100
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'QtaUsata'
-          Title.Caption = 'Quantit'#224' Utilizzata'
           Width = 100
           Visible = True
         end>
@@ -229,7 +222,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
       Top = 24
       Width = 145
       Height = 129
-      Caption = 'Quantit'#224' Totale Cassetto'
+      Caption = 'Codice Acquisto'
       TabOrder = 2
       object Bevel2: TBevel
         Left = 16
@@ -239,25 +232,21 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
         Shape = bsBottomLine
       end
       object btnInserisci: TButton
-        Left = 54
+        Left = 38
         Top = 88
         Width = 75
         Height = 25
         Caption = 'Inserisci'
-        TabOrder = 1
+        TabOrder = 0
         OnClick = btnInserisciClick
       end
-      object edtQtaMax: TNumberEdit
+      object edtQtaMax: TTextEdit
         Left = 16
         Top = 32
-        Width = 113
+        Width = 121
         Height = 21
-        MaxLength = 5
-        TabOrder = 0
-        AllowNegative = False
-        NumberType = ntInteger
-        DecimalLength = -1
-        EnterColor = clSkyBlue
+        TabOrder = 1
+        EnterColor = clCream
       end
     end
     object gbFiltro2: TGroupBox
@@ -313,7 +302,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
     Top = 16
     Width = 209
     Height = 689
-    Caption = 'Cassetti'
+    Caption = 'Fornitori'
     TabOrder = 0
     object lblInfo4: TLabel
       Left = 16
@@ -331,54 +320,12 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
     end
     object lbCassetti: TListBox
       Left = 16
-      Top = 168
-      Width = 177
-      Height = 489
-      ItemHeight = 13
-      TabOrder = 1
-      OnClick = lbCassettiClick
-    end
-    object gbFiltro: TGroupBox
-      Left = 16
       Top = 24
       Width = 177
-      Height = 129
-      Caption = 'Filtro'
+      Height = 633
+      ItemHeight = 13
       TabOrder = 0
-      object lblInfo2: TLabel
-        Left = 17
-        Top = 72
-        Width = 31
-        Height = 13
-        Caption = 'Mobile'
-      end
-      object lblInfo1: TLabel
-        Left = 16
-        Top = 24
-        Width = 30
-        Height = 13
-        Caption = 'Studio'
-      end
-      object cbStudi: TComboBox
-        Left = 16
-        Top = 40
-        Width = 145
-        Height = 21
-        Style = csDropDownList
-        ItemHeight = 13
-        TabOrder = 0
-        OnChange = cbStudiChange
-      end
-      object cbMobili: TComboBox
-        Left = 16
-        Top = 88
-        Width = 145
-        Height = 21
-        Style = csDropDownList
-        ItemHeight = 13
-        TabOrder = 1
-        OnChange = cbMobiliChange
-      end
+      OnClick = lbCassettiClick
     end
   end
   object qrQuery: TADOQuery

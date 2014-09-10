@@ -16,11 +16,6 @@ type
     lblInfo4: TLabel;
     lblCassettoSel: TLabel;
     lbCassetti: TListBox;
-    gbFiltro: TGroupBox;
-    lblInfo2: TLabel;
-    lblInfo1: TLabel;
-    cbStudi: TComboBox;
-    cbMobili: TComboBox;
     dgProdotti: TDBGrid;
     dgProdCassetto: TDBGrid;
     lblInfo3: TLabel;
@@ -33,7 +28,6 @@ type
     btnElimina: TButton;
     gbQtaMaxProd: TGroupBox;
     btnInserisci: TButton;
-    edtQtaMax: TNumberEdit;
     gbFiltro2: TGroupBox;
     Label1: TLabel;
     cbTipologie: TComboBox;
@@ -42,9 +36,8 @@ type
     img1: TImage;
     Label2: TLabel;
     lblProdCassSel: TLabel;
+    edtQtaMax: TTextEdit;
     procedure FormShow(Sender: TObject);
-    procedure cbStudiChange(Sender: TObject);
-    procedure cbMobiliChange(Sender: TObject);
     procedure lbCassettiClick(Sender: TObject);
     procedure edtFiltroProdKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -60,17 +53,14 @@ type
   public
     { Public declarations }
     procedure LoadTipologie;
-    procedure LoadStudi;
-    procedure LoadMobili;
-    procedure LoadCassetti;
-    procedure LoadTuttiCassetti;
+    procedure LoadFornitori;
     procedure ResetCampi;
     procedure ResetCampiFiltroCassetto;    
-    procedure LoadProdottiCassetto;
+    procedure LoadProdottiFornitore;
     procedure LoadProdotti;
     procedure InserisciProdotto;
     procedure EliminaProdotto;
-    function EsisteProdotto(CodProd, CodCassetto: string): Boolean;
+    function EsisteProdotto(Fornitore, Nome: string): Boolean;
   end;
 
 var
@@ -92,11 +82,9 @@ var
 procedure TfrmAssociaProdottiFornitori.FormShow(Sender: TObject);
 begin
   ResetCampi;
-  LoadStudi;
-  LoadTuttiCassetti;
+  LoadFornitori;
   LoadProdotti;
   LoadTipologie;
-  cbStudi.SetFocus;
 end;
 
 procedure TfrmAssociaProdottiFornitori.FormClose(Sender: TObject;
@@ -109,26 +97,10 @@ end;
 { **************************************************************************** }
 { *** Componenti ************************************************************* }
 
-procedure TfrmAssociaProdottiFornitori.cbStudiChange(Sender: TObject);
-begin
-  cbMobili.Clear;
-  ResetCampi;
-  qrProdCassetto.Active := False;
-  if cbStudi.ItemIndex = 0 then LoadTuttiCassetti
-  else LoadMobili;
-end;
-
-procedure TfrmAssociaProdottiFornitori.cbMobiliChange(Sender: TObject);
-begin
-  ResetCampiFiltroCassetto;
-  qrProdCassetto.Active := False;
-  LoadCassetti;
-end;
-
 procedure TfrmAssociaProdottiFornitori.lbCassettiClick(Sender: TObject);
 begin
   lblCassettoSel.Caption := lbCassetti.Items[lbCassetti.itemIndex];
-  LoadProdottiCassetto;
+  LoadProdottiFornitore;
   btnElimina.Enabled := False;
   gbQtaMaxProd.Visible := False;
   lblProdSel.Caption := EMPTYSTR;
@@ -178,7 +150,7 @@ begin
   begin
     EliminaProdotto;
     LoadProdotti;
-    LoadProdottiCassetto;
+    LoadProdottiFornitore;
   end;
   btnElimina.Enabled := False;
   lblProdCassSel.Caption := EMPTYSTR;
@@ -186,32 +158,25 @@ end;
 
 procedure TfrmAssociaProdottiFornitori.btnInserisciClick(Sender: TObject);
 var
-  qtaIns, qtaMax: Integer;
-  codProd: string;
+  nome, codAcquisto: string;
 begin
-  codProd := qrProdotti.FieldByName('Codice').AsString;
-  if EsisteProdotto(codProd, lblCassettoSel.Caption) then
-  begin
-    ShowMessage(MSG_PRODOTTO_ESISTENTE);
-    gbQtaMaxProd.Visible := False;
-    lblProdSel.Caption := EMPTYSTR;
-  end
-  else
+  nome := qrProdotti.FieldByName('Nome').AsString;
+  //if EsisteProdotto(nome, lblCassettoSel.Caption) then
+  //begin
+   // ShowMessage(MSG_PRODOTTO_ESISTENTE);
+   // gbQtaMaxProd.Visible := False;
+  //  lblProdSel.Caption := EMPTYSTR;
+  //end
+  //else
   begin
     if Trim(edtQtaMax.Text) = EMPTYSTR then ShowMessage(MSG_INSERIRE_DATI)
     else
     begin
-      qtaIns := StrToIntDef(edtQtaMax.Text, 0);
-      qtaMax := qrProdotti.FieldByName('QtaTotale').AsInteger;
-
-      if qtaIns <= qtaMax then
-      begin
-        InserisciProdotto;
-        LoadProdotti;
-        LoadProdottiCassetto;
-        lblProdSel.Caption := EMPTYSTR;
-      end
-      else ShowMessage(MSG_QTAMAX_SUPERATA);
+      codAcquisto := edtQtaMax.Text;
+      InserisciProdotto;
+      LoadProdotti;
+      LoadProdottiFornitore;
+      lblProdSel.Caption := EMPTYSTR;
     end;
   end;
 end;
@@ -226,7 +191,6 @@ end;
 
 procedure TfrmAssociaProdottiFornitori.ResetCampi;
 begin
-  cbMobili.Clear;
   lblCassettoSel.Caption := EMPTYSTR;
   lblProdSel.Caption := EMPTYSTR;
   lblProdCassSel.Caption := EMPTYSTR;
@@ -268,85 +232,31 @@ begin
   cbTipologie.ItemIndex := 0;
 end;
 
-procedure TfrmAssociaProdottiFornitori.LoadCassetti;
-var sel: string;
+procedure TfrmAssociaProdottiFornitori.LoadFornitori;
 begin
-  sel := hsMobili.GetKey(cbMobili.ItemIndex);
   lbCassetti.Clear;
-  qrQuery.SQL.Text := 'SELECT * FROM [Cassetti] WHERE [CodMobile] = ' + QuotedStr(sel) + ' ORDER BY [Codice]';
+  qrQuery.SQL.Text := 'SELECT [Fornitore] FROM [Fornitori] ORDER BY [Fornitore]';
   qrQuery.Active := True;
   qrQuery.First;
   while not qrQuery.Eof do
   begin
-    lbCassetti.Items.Add(qrQuery.FieldByName('Codice').AsString);
+    lbCassetti.Items.Add(qrQuery.FieldByName('Fornitore').AsString);
     qrQuery.Next;
   end;
   qrQuery.Active := False;
   lbCassetti.ItemIndex := -1;
 end;
 
-procedure TfrmAssociaProdottiFornitori.LoadMobili;
-var sel: string;
-begin
-  sel := hsStudi.GetKey(cbStudi.ItemIndex);
-  hsMobili := THashTable.Create;
-  cbMobili.Clear;
-  qrQuery.SQL.Text := 'SELECT * FROM [Mobili] WHERE [CodStudio] = ' + QuotedStr(sel) + ' ORDER BY [Nome]';
-  qrQuery.Active := True;
-  qrQuery.First;
-  while not qrQuery.Eof do
-  begin
-    hsMobili.Add(qrQuery.FieldByName('Codice').AsString, qrQuery.FieldByName('Nome').AsString);
-    cbMobili.Items.Add(qrQuery.FieldByName('Nome').AsString);
-    qrQuery.Next;
-  end;
-  qrQuery.Active := False;
-  cbMobili.ItemIndex := -1;
-end;
-
-procedure TfrmAssociaProdottiFornitori.LoadStudi;
-begin
-  hsStudi := THashTable.Create;
-  cbStudi.Clear;
-  cbStudi.Items.Add(' ');
-  hsStudi.Add(' ', ' ');
-  qrQuery.SQL.Text := 'SELECT * FROM [Studi] ORDER BY [Nome]';
-  qrQuery.Active := True;
-  qrQuery.First;
-  while not qrQuery.Eof do
-  begin
-    hsStudi.Add(qrQuery.FieldByName('Codice').AsString, qrQuery.FieldByName('Nome').AsString);
-    cbStudi.Items.Add(qrQuery.FieldByName('Nome').AsString);
-    qrQuery.Next;
-  end;
-  qrQuery.Active := False;
-  cbStudi.ItemIndex := 0;
-end;
-
-procedure TfrmAssociaProdottiFornitori.LoadTuttiCassetti;
-begin
-  lbCassetti.Clear;
-  qrQuery.SQL.Text := 'SELECT * FROM [Cassetti] ORDER BY [Codice]';
-  qrQuery.Active := True;
-  qrQuery.First;
-  while not qrQuery.Eof do
-  begin
-    lbCassetti.Items.Add(qrQuery.FieldByName('Codice').AsString);
-    qrQuery.Next;
-  end;
-  qrQuery.Active := False;
-  lbCassetti.ItemIndex := -1;
-end;
-
-procedure TfrmAssociaProdottiFornitori.LoadProdottiCassetto;
+procedure TfrmAssociaProdottiFornitori.LoadProdottiFornitore;
 var sel: string;
 begin
   sel := lbCassetti.Items[lbCassetti.itemIndex];
   qrProdCassetto.Active := False;
-  qrProdCassetto.SQL.Text := 'SELECT [Prodotti_Cassetti].*, [Prodotti].[Nome], [Prodotti].[Tipologia] ' +
-                             'FROM [Prodotti] INNER JOIN [Prodotti_Cassetti] ' +
-                             'ON [Prodotti].[Codice] = [Prodotti_Cassetti].[CodProdotto] ' +
-                             'WHERE [Prodotti_Cassetti].[CodCassetto] = ' + QuotedStr(sel) + ' ' +
+  qrProdCassetto.SQL.Text := 'SELECT [Fornitori_Prodotti].*, [Prodotti].[Nome], [Prodotti].[Tipologia], [Fornitori].[Fornitore] ' +
+                             'FROM ([Fornitori_Prodotti] ' +
+                             'INNER JOIN [Prodotti] ON [Fornitori_Prodotti].[IdProdotto] = [Prodotti].[Codice]) ' +
+                             'INNER JOIN [Fornitori] ON [Fornitori_Prodotti].[Fornitore] = [Fornitori].[Fornitore] ' +
+                             'WHERE [Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(sel) + ' ' +
                              'ORDER BY [Prodotti].[Nome]';
   qrProdCassetto.Active := True;
 end;
@@ -377,14 +287,14 @@ end;
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
-function TfrmAssociaProdottiFornitori.EsisteProdotto(CodProd, CodCassetto: string): Boolean;
+function TfrmAssociaProdottiFornitori.EsisteProdotto(Fornitore, Nome: string): Boolean;
 var ris: Boolean;
 begin
   ris := True;
-  qrQuery.SQL.Text := 'SELECT [CodCassetto] ' +
-                      'FROM [Prodotti_Cassetti] ' +
-                      'WHERE [CodCassetto] = ' + QuotedStr(CodCassetto) + ' AND ' +
-                            '[CodProdotto] = ' + codProd;
+  qrQuery.SQL.Text := 'SELECT [Prodotti].[Nome] ' +
+                      'FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto]' +
+                      'WHERE [Prodotti].[Nome] = ' + QuotedStr(Nome) + ' AND ' +
+                            '[Fornitori_Prodotti].[Fornitore] = ' + Fornitore;
   qrQuery.Active := True;
   if qrQuery.IsEmpty then ris := False;
   qrQuery.Active := False;
@@ -421,13 +331,8 @@ var CodProd: string;
 begin
   try
     CodProd := qrProdotti.FieldByName('Codice').AsString;
-    qrQuery.SQL.Text := 'INSERT INTO [Prodotti_Cassetti] ([CodCassetto], [CodProdotto], [QtaTotale], [QtaUsata]) ' +
-                        'VALUES (' + QuotedStr(lbCassetti.Items[lbCassetti.ItemIndex]) + ', ' + codProd + ', ' + edtQtaMax.Text +', 0)';
-    qrQuery.ExecSQL;
-
-    qrQuery.SQL.Text := 'UPDATE [Prodotti] ' +
-                        'SET [QtaTotale] = [QtaTotale] - ' + edtQtaMax.Text + ' ' +
-                        'WHERE [Codice] = ' + CodProd;
+    qrQuery.SQL.Text := 'INSERT INTO [Fornitori_Prodotti] ([CodiceAcquisto], [Fornitore], [IdProdotto]) ' +
+                        'VALUES (' + edtQtaMax.Text +', ' + QuotedStr(lbCassetti.Items[lbCassetti.ItemIndex]) + ', ' + codProd + ')';
     qrQuery.ExecSQL;
   except
     ShowMessage(MSG_ERRORE_SCRITTURA_DB);
