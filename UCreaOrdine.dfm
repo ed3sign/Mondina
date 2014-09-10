@@ -124,14 +124,14 @@ object frmCreaOrdine: TfrmCreaOrdine
       Caption = 'Tipologia'
     end
     object lblInfo2: TLabel
-      Left = 256
+      Left = 16
       Top = 16
       Width = 41
       Height = 13
       Caption = 'Fornitore'
     end
     object edtCodice: TTextLabeledEdit
-      Left = 16
+      Left = 256
       Top = 32
       Width = 233
       Height = 21
@@ -180,13 +180,14 @@ object frmCreaOrdine: TfrmCreaOrdine
       EnterColor = clSkyBlue
     end
     object cbFornitori: TComboBox
-      Left = 256
+      Left = 16
       Top = 32
       Width = 233
       Height = 21
       Style = csDropDownList
       ItemHeight = 13
       TabOrder = 2
+      OnChange = cbFornitoriChange
     end
     object edtSconto: TNumberLabeledEdit
       Left = 168

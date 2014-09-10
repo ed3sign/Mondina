@@ -30,6 +30,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnOKClick(Sender: TObject);
     procedure btnAnnullaClick(Sender: TObject);
+    procedure cbFornitoriChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,6 +67,21 @@ end;
 { **************************************************************************** }
 { *** Componenti ************************************************************* }
 
+procedure TfrmCreaOrdine.cbFornitoriChange(Sender: TObject);
+var
+Cod: string;
+begin
+    qrQuery.SQL.Text := 'SELECT [Fornitori_Prodotti].[CodiceAcquisto]' +
+                             'FROM ([Fornitori_Prodotti] ' +
+                             'INNER JOIN [Prodotti] ON [Fornitori_Prodotti].[IdProdotto] = [Prodotti].[Codice]) ' +
+                             'INNER JOIN [Fornitori] ON [Fornitori_Prodotti].[Fornitore] = [Fornitori].[Fornitore] ' +
+                             'WHERE [Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(cbFornitori.Items[cbFornitori.ItemIndex]) + ' AND [Prodotti].[Nome] = ' + QuotedStr(edtNome.Text);
+    qrQuery.Open;
+
+    Cod := qrQuery.Fields[0].AsString;
+    edtCodice.Text := Cod
+end;
+
 procedure TfrmCreaOrdine.btnOKClick(Sender: TObject);
 begin
   if (Trim(edtCodice.Text) = EMPTYSTR) or (Trim(edtNome.Text) = EMPTYSTR) or
@@ -100,7 +116,7 @@ begin
   edtSconto.Text := '0';
   edtIVA.Text := '0';
   edtQtaOrd.Text := '0';
-  edtCodice.SetFocus;
+  cbFornitori.SetFocus;
 end;
 
 { **************************************************************************** }
