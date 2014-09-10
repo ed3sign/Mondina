@@ -295,9 +295,9 @@ begin
   qrQuery.SQL.Text := 'SELECT [Prodotti].[Nome] ' +
                       ' FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto] ' +
                       ' WHERE [Prodotti].[Nome] = ' + QuotedStr(Nome) + ' AND ' +
-                            '[Fornitori_Prodotti].[Fornitore] = ' + Fornitore + ';';
+                            '[Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(Fornitore) + ';';
 
-  ShowMessage(qrQuery.SQL.Text);
+  //ShowMessage(qrQuery.SQL.Text);
   qrQuery.Active := True;
 
   if qrQuery.IsEmpty then ris := False;
@@ -307,23 +307,22 @@ end;
 
 procedure TfrmAssociaProdottiFornitori.EliminaProdotto;
 var
-  codProd: string;
-  qtaTotCass: integer;
-  qtaUsata: integer;
+  Cod: Integer;
+
 begin
   try
-    codProd := qrProdCassetto.FieldByName('CodProdotto').AsString;
-    qtaTotCass := qrProdCassetto.FieldByName('QtaTotale').AsInteger;
-    qtaUsata := qrProdCassetto.FieldByName('QtaUsata').AsInteger;
 
-    qrQuery.SQL.Text := 'UPDATE [Prodotti] ' +
-                          'SET [QtaTotale] = [QtaTotale] +  ' + IntToStr(qtaTotCass-qtaUsata)  + ' ' +
-                          'WHERE [Codice] = ' + codProd;
-    qrQuery.ExecSQL;
+    qrQuery.SQL.Text := 'SELECT [Prodotti].[Codice] ' +
+                      ' FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto] ' +
+                      ' WHERE [Prodotti].[Nome] = ' + QuotedStr(lblProdCassSel.Caption);
+    qrQuery.Open;
 
-    qrQuery.SQL.Text := 'DELETE FROM [Prodotti_Cassetti] ' +
-                          'WHERE [CodCassetto] = ' + QuotedStr(lbCassetti.Items[lbCassetti.ItemIndex]) + ' AND ' +
-                                '[CodProdotto] = ' + codProd;
+    Cod := qrQuery.Fields[0].AsInteger;
+
+    qrQuery.SQL.Text := 'DELETE FROM [Fornitori_Prodotti] ' +
+                          ' WHERE [IdProdotto] = ' + IntToStr(Cod) + ' AND ' +
+                                '[Fornitore] = ' + QuotedStr(lblCassettoSel.Caption) + ';';
+    //ShowMessage(qrQuery.SQL.Text);
     qrQuery.ExecSQL;
   except
     ShowMessage(MSG_ERRORE_SCRITTURA_DB);
