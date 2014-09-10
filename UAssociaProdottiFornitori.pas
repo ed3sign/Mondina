@@ -161,13 +161,14 @@ var
   nome, codAcquisto: string;
 begin
   nome := qrProdotti.FieldByName('Nome').AsString;
-  //if EsisteProdotto(nome, lblCassettoSel.Caption) then
-  //begin
-   // ShowMessage(MSG_PRODOTTO_ESISTENTE);
-   // gbQtaMaxProd.Visible := False;
-  //  lblProdSel.Caption := EMPTYSTR;
-  //end
-  //else
+  if EsisteProdotto(lblCassettoSel.Caption, nome) then
+  begin
+    ShowMessage(MSG_PRODOTTO_ESISTENTE);
+    gbQtaMaxProd.Visible := False;
+    lblProdSel.Caption := EMPTYSTR;
+  end
+
+  else
   begin
     if Trim(edtQtaMax.Text) = EMPTYSTR then ShowMessage(MSG_INSERIRE_DATI)
     else
@@ -287,15 +288,18 @@ end;
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
-function TfrmAssociaProdottiFornitori.EsisteProdotto(Fornitore, Nome: string): Boolean;
+function TfrmAssociaProdottiFornitori.EsisteProdotto(Fornitore, Nome:string): Boolean;
 var ris: Boolean;
 begin
   ris := True;
   qrQuery.SQL.Text := 'SELECT [Prodotti].[Nome] ' +
-                      'FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto]' +
-                      'WHERE [Prodotti].[Nome] = ' + QuotedStr(Nome) + ' AND ' +
-                            '[Fornitori_Prodotti].[Fornitore] = ' + Fornitore;
+                      ' FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto] ' +
+                      ' WHERE [Prodotti].[Nome] = ' + QuotedStr(Nome) + ' AND ' +
+                            '[Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(Fornitore) + ';';
+
+  ShowMessage(qrQuery.SQL.Text);
   qrQuery.Active := True;
+
   if qrQuery.IsEmpty then ris := False;
   qrQuery.Active := False;
   EsisteProdotto := ris;
@@ -332,7 +336,7 @@ begin
   try
     CodProd := qrProdotti.FieldByName('Codice').AsString;
     qrQuery.SQL.Text := 'INSERT INTO [Fornitori_Prodotti] ([CodiceAcquisto], [Fornitore], [IdProdotto]) ' +
-                        'VALUES (' + edtQtaMax.Text +', ' + QuotedStr(lbCassetti.Items[lbCassetti.ItemIndex]) + ', ' + codProd + ')';
+                        'VALUES (' + QuotedStr(edtQtaMax.Text) +', ' + QuotedStr(lbCassetti.Items[lbCassetti.ItemIndex]) + ', ' + codProd + ')';
     qrQuery.ExecSQL;
   except
     ShowMessage(MSG_ERRORE_SCRITTURA_DB);
