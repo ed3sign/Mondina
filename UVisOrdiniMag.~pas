@@ -66,9 +66,6 @@ uses dmConnection, UMessaggi, URifornisciCassetti, UNuovoOrdine,
 
 { TfrmVisMagazzino }
 
-var
-  CodiceProdotto: string;
-
 { **************************************************************************** }
 { *** Finestra *************************************************************** }
 

@@ -1,10 +1,10 @@
 object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
-  Left = 258
-  Top = 0
+  Left = -8
+  Top = -8
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Fornitori'
-  ClientHeight = 741
-  ClientWidth = 953
+  ClientHeight = 837
+  ClientWidth = 1600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -222,7 +222,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
       Top = 24
       Width = 145
       Height = 129
-      Caption = 'Nuovo Codice Acquisro'
+      Caption = 'Nuovo Codice Acquisto'
       TabOrder = 2
       object Bevel2: TBevel
         Left = 16
@@ -333,7 +333,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
     Top = 332
     Width = 145
     Height = 129
-    Caption = 'Modifica Codice d'#39'Acquisto'
+    Caption = 'Modifica Codice Acquisto'
     TabOrder = 4
     Visible = False
     object Bevel1: TBevel

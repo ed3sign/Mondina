@@ -190,14 +190,7 @@ var
   nome, codAcquisto: string;
 begin
   nome := qrProdotti.FieldByName('Nome').AsString;
-  //if EsisteProdotto(lblCassettoSel.Caption, nome) then
-  //begin
-    //ShowMessage(MSG_PRODOTTO_ESISTENTE);
-    //gbQtaMaxProd.Visible := False;
-    //lblProdSel.Caption := EMPTYSTR;
-  //end
 
-  //else
   begin
     if Trim(edtQtaMax.Text) = EMPTYSTR then ShowMessage(MSG_INSERIRE_DATI)
     else

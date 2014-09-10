@@ -39,7 +39,9 @@ type
     procedure LoadTipologie;
     procedure LoadFornitori;
     procedure AddProdotto;
+    procedure AssociaProdottoFornitore;
     function GetAnnoStr: string;
+    function EsisteProdotto(Fornitore, Nome: string): Boolean;
   end;
 
 var
@@ -92,6 +94,11 @@ begin
     ShowMessage(MSG_INSERIRE_DATI)
   else
   begin
+    if not EsisteProdotto(cbFornitori.Items[cbFornitori.ItemIndex], edtNome.Text) then
+    begin
+       AssociaProdottoFornitore;
+    end;
+    
     AddProdotto;
     ResetCampi;
     Close;
@@ -155,6 +162,41 @@ end;
 
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
+
+function TfrmCreaOrdine.EsisteProdotto(Fornitore, Nome:string): Boolean;
+var ris: Boolean;
+begin
+  ris := True;
+  qrQuery.SQL.Text := 'SELECT [Prodotti].[Nome] ' +
+                      ' FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto] ' +
+                      ' WHERE [Prodotti].[Nome] = ' + QuotedStr(Nome) + ' AND ' +
+                            '[Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(Fornitore) + ';';
+
+  //ShowMessage(qrQuery.SQL.Text);
+  qrQuery.Active := True;
+
+  if qrQuery.IsEmpty then ris := False;
+  qrQuery.Active := False;
+  EsisteProdotto := ris;
+end;
+
+procedure TfrmCreaOrdine.AssociaProdottoFornitore;
+var CodProd: integer;
+begin
+  try
+    qrQuery.SQL.Text := 'SELECT [Prodotti].[Codice] ' +
+                      ' FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto] ' +
+                      ' WHERE [Prodotti].[Nome] = ' + QuotedStr(edtNome.Text);
+    qrQuery.Active := True;
+
+    CodProd := qrQuery.FieldByName('Codice').AsInteger;
+    qrQuery.SQL.Text := 'INSERT INTO [Fornitori_Prodotti] ([CodiceAcquisto], [Fornitore], [IdProdotto]) ' +
+                        'VALUES (' + QuotedStr(edtCodice.Text) +', ' + QuotedStr(cbFornitori.Items[cbFornitori.ItemIndex]) + ', ' + IntToStr(CodProd) + ')';
+    qrQuery.ExecSQL;
+  except
+    ShowMessage(MSG_ERRORE_SCRITTURA_DB);
+  end;
+end;
 
 function TfrmCreaOrdine.GetAnnoStr: string;
 var

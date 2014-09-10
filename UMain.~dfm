@@ -1,6 +1,6 @@
 object frmMain: TfrmMain
-  Left = 343
-  Top = 159
+  Left = 764
+  Top = 117
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Magazzino - Utente Non Autenticato'
@@ -221,6 +221,11 @@ object frmMain: TfrmMain
         Caption = 'Prodotti Richiesti dagli Studi'
         ImageIndex = 6
         OnClick = mmProdRichiestiStudiClick
+      end
+      object mmProdottiConsegnati: TMenuItem
+        Caption = 'Prodotti Consegnati'
+        ImageIndex = 6
+        OnClick = mmProdottiConsegnatiClick
       end
     end
     object mmStrumenti: TMenuItem

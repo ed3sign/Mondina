@@ -32,7 +32,6 @@ uses
   UVisProdottiPerTipologia in 'UVisProdottiPerTipologia.pas' {frmProdottiPerTipologia},
   UReportProdottiPerTipologia in 'UReportProdottiPerTipologia.pas' {frmReportProdottiPerTipologia},
   UVisProdottiOrdinati in 'UVisProdottiOrdinati.pas' {frmProdottiOrdinati},
-  UReportProdottiOrdinati in 'UReportProdottiOrdinati.pas' {frmReportProdottiOrdinati},
   UVisProdottiPerAssistente in 'UVisProdottiPerAssistente.pas' {frmProdottiPerAssistente},
   UReportProdottiPerAssistente in 'UReportProdottiPerAssistente.pas' {frmReportProdottiPerAssistente},
   UAssociaAssistentiSostituti in 'UAssociaAssistentiSostituti.pas' {frmAssociaAssistentiSostituti},
@@ -51,7 +50,8 @@ uses
   UReportProdottiRichiestiStudi in 'UReportProdottiRichiestiStudi.pas' {frmReportProdottiRichiestiStudi},
   UVisMagazzino in 'UVisMagazzino.pas' {frmVisMagazzino},
   UCreaProdotto in 'UCreaProdotto.pas' {frmCreaProdotto},
-  UAssociaProdottiFornitori in 'UAssociaProdottiFornitori.pas' {frmAssociaProdottiFornitori};
+  UAssociaProdottiFornitori in 'UAssociaProdottiFornitori.pas' {frmAssociaProdottiFornitori},
+  UReportProdottiConsegnati in 'UReportProdottiConsegnati.pas' {frmReportProdottiConsegnati};
 
 {$R *.res}
 
@@ -85,7 +85,6 @@ begin
   Application.CreateForm(TfrmProdottiPerTipologia, frmProdottiPerTipologia);
   Application.CreateForm(TfrmReportProdottiPerTipologia, frmReportProdottiPerTipologia);
   Application.CreateForm(TfrmProdottiOrdinati, frmProdottiOrdinati);
-  Application.CreateForm(TfrmReportProdottiOrdinati, frmReportProdottiOrdinati);
   Application.CreateForm(TfrmProdottiPerAssistente, frmProdottiPerAssistente);
   Application.CreateForm(TfrmReportProdottiPerAssistente, frmReportProdottiPerAssistente);
   Application.CreateForm(TfrmAssociaAssistentiSostituti, frmAssociaAssistentiSostituti);
@@ -104,6 +103,7 @@ begin
   Application.CreateForm(TfrmVisMagazzino, frmVisMagazzino);
   Application.CreateForm(TfrmCreaProdotto, frmCreaProdotto);
   Application.CreateForm(TfrmAssociaProdottiFornitori, frmAssociaProdottiFornitori);
+  Application.CreateForm(TfrmReportProdottiConsegnati, frmReportProdottiConsegnati);
   Application.Run;
 end.
 

@@ -1,6 +1,6 @@
 object frmCreaOrdine: TfrmCreaOrdine
-  Left = 524
-  Top = 77
+  Left = 990
+  Top = 225
   BorderStyle = bsDialog
   Caption = 'Ordina Prodotto'
   ClientHeight = 270
@@ -268,13 +268,13 @@ object frmCreaOrdine: TfrmCreaOrdine
   object qrQuery: TADOQuery
     Connection = dmCnt.AdoCnt
     Parameters = <>
-    Left = 8
+    Left = 16
     Top = 152
   end
   object tblProdotti: TADOTable
     Connection = dmCnt.AdoCnt
     TableName = 'OrdiniMagazzino'
-    Left = 24
+    Left = 16
     Top = 112
   end
 end

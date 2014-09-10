@@ -1,6 +1,6 @@
 object frmVisOrdiniMag: TfrmVisOrdiniMag
-  Left = 400
-  Top = 83
+  Left = 419
+  Top = 135
   BorderStyle = bsDialog
   Caption = 'Ordini Magazzino'
   ClientHeight = 629
@@ -230,14 +230,14 @@ object frmVisOrdiniMag: TfrmVisOrdiniMag
         item
           Expanded = False
           FieldName = 'Sconto'
-          Title.Caption = 'Sconto ('#8364')'
+          Title.Caption = 'Sconto (%)'
           Width = 75
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'IVA'
-          Title.Caption = 'IVA ('#8364')'
+          Title.Caption = 'IVA (%)'
           Width = 70
           Visible = True
         end

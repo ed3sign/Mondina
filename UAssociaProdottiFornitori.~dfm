@@ -1,9 +1,9 @@
 object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
-  Left = 256
-  Top = 29
+  Left = 517
+  Top = 347
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Fornitori'
-  ClientHeight = 745
+  ClientHeight = 741
   ClientWidth = 953
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -222,7 +222,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
       Top = 24
       Width = 145
       Height = 129
-      Caption = 'Codice d'#39'Acquisto'
+      Caption = 'Nuovo Codice Acquisto'
       TabOrder = 2
       object Bevel2: TBevel
         Left = 16
@@ -326,6 +326,39 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
       ItemHeight = 13
       TabOrder = 0
       OnClick = lbCassettiClick
+    end
+  end
+  object gbQtaMaxProdEdit: TGroupBox
+    Left = 784
+    Top = 332
+    Width = 145
+    Height = 129
+    Caption = 'Modifica Codice Acquisto'
+    TabOrder = 4
+    Visible = False
+    object Bevel1: TBevel
+      Left = 16
+      Top = 56
+      Width = 121
+      Height = 17
+      Shape = bsBottomLine
+    end
+    object btnEdit: TButton
+      Left = 38
+      Top = 88
+      Width = 75
+      Height = 25
+      Caption = 'Modifica'
+      TabOrder = 0
+      OnClick = btnEditClick
+    end
+    object edtQtaMaxEdit: TTextEdit
+      Left = 16
+      Top = 32
+      Width = 121
+      Height = 21
+      TabOrder = 1
+      EnterColor = clCream
     end
   end
   object qrQuery: TADOQuery

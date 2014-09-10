@@ -57,27 +57,14 @@ object frmReportProdottiSottoSoglia: TfrmReportProdottiSottoSoglia
       100.000000000000000000
       0.000000000000000000)
     PrinterSettings.Copies = 1
-    PrinterSettings.OutputBin = Auto
     PrinterSettings.Duplex = False
     PrinterSettings.FirstPage = 0
     PrinterSettings.LastPage = 0
-    PrinterSettings.UseStandardprinter = False
-    PrinterSettings.UseCustomBinCode = False
-    PrinterSettings.CustomBinCode = 0
-    PrinterSettings.ExtendedDuplex = 0
-    PrinterSettings.UseCustomPaperCode = False
-    PrinterSettings.CustomPaperCode = 0
-    PrinterSettings.PrintMetaFile = False
-    PrinterSettings.PrintQuality = 0
-    PrinterSettings.Collate = 0
-    PrinterSettings.ColorOption = 0
+    PrinterSettings.OutputBin = Auto
     PrintIfEmpty = True
     SnapToGrid = True
     Units = MM
     Zoom = 100
-    PrevFormStyle = fsNormal
-    PreviewInitialState = wsNormal
-    PrevInitialZoom = qrZoomToFit
     object qrbTitolo: TQRBand
       Left = 38
       Top = 38
@@ -90,14 +77,11 @@ object frmReportProdottiSottoSoglia: TfrmReportProdottiSottoSoglia
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = False
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
         198.437500000000000000
         2770.187500000000000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbPageHeader
       object lblInfo1: TQRLabel
         Left = 16
@@ -130,24 +114,6 @@ object frmReportProdottiSottoSoglia: TfrmReportProdottiSottoSoglia
         WordWrap = True
         FontSize = 10
       end
-      object QRPDFShape1: TQRPDFShape
-        Left = 16
-        Top = 35
-        Width = 1009
-        Height = 5
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          13.229166666666670000
-          42.333333333333330000
-          92.604166666666680000
-          2669.645833333333000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
-      end
       object lblInfo2: TQRLabel
         Left = 16
         Top = 48
@@ -168,99 +134,6 @@ object frmReportProdottiSottoSoglia: TfrmReportProdottiSottoSoglia
         AutoSize = True
         AutoStretch = False
         Caption = 'Prodotto'
-        Color = clWhite
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object lblInfo3: TQRLabel
-        Left = 408
-        Top = 48
-        Width = 104
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1079.500000000000000000
-          127.000000000000000000
-          275.166666666666700000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = True
-        AutoStretch = False
-        Caption = 'Codice Acquisto'
-        Color = clWhite
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object lblInfo4: TQRLabel
-        Left = 568
-        Top = 48
-        Width = 62
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1502.833333333333000000
-          127.000000000000000000
-          164.041666666666700000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = True
-        AutoStretch = False
-        Caption = 'Fornitore'
-        Color = clWhite
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object lblInfo5: TQRLabel
-        Left = 728
-        Top = 48
-        Width = 98
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1926.166666666667000000
-          127.000000000000000000
-          259.291666666666700000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = True
-        AutoStretch = False
-        Caption = 'Costo Conf. ('#8364')'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -376,14 +249,11 @@ object frmReportProdottiSottoSoglia: TfrmReportProdottiSottoSoglia
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = True
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
         66.145833333333330000
         2770.187500000000000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbDetail
       object lblNome: TQRDBText
         Left = 16
@@ -416,120 +286,6 @@ object frmReportProdottiSottoSoglia: TfrmReportProdottiSottoSoglia
         Transparent = True
         WordWrap = True
         FontSize = 8
-      end
-      object lblCodAcquisto: TQRDBText
-        Left = 408
-        Top = 1
-        Width = 150
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1079.500000000000000000
-          2.645833333333333000
-          396.875000000000000000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = False
-        AutoStretch = False
-        Color = clWhite
-        DataSet = qrProdotti
-        DataField = 'CodiceAcquisto'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object lblFornitore: TQRDBText
-        Left = 568
-        Top = 1
-        Width = 150
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1502.833333333333000000
-          2.645833333333333000
-          396.875000000000000000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = False
-        AutoStretch = False
-        Color = clWhite
-        DataSet = qrProdotti
-        DataField = 'Fornitore'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object lblCostoConf: TQRDBText
-        Left = 728
-        Top = 1
-        Width = 100
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1926.166666666667000000
-          2.645833333333333000
-          264.583333333333300000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = False
-        AutoStretch = False
-        Color = clWhite
-        DataSet = qrProdotti
-        DataField = 'CostoConfezione'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object QRPDFShape2: TQRPDFShape
-        Left = 16
-        Top = 18
-        Width = 1009
-        Height = 1
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          2.645833333333333000
-          42.333333333333330000
-          47.625000000000000000
-          2669.645833333333000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
       end
       object lblQtaTotale: TQRDBText
         Left = 840
@@ -622,19 +378,6 @@ object frmReportProdottiSottoSoglia: TfrmReportProdottiSottoSoglia
   end
   object QRTextFilter1: TQRTextFilter
     Left = 205
-    Top = 11
-  end
-  object QRPDFFilter1: TQRPDFFilter
-    CompressionOn = False
-    Left = 245
-    Top = 11
-  end
-  object QRExcelFilter1: TQRExcelFilter
-    Left = 285
-    Top = 11
-  end
-  object QRRTFFilter1: TQRRTFFilter
-    Left = 325
     Top = 11
   end
 end
