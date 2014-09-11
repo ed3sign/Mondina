@@ -15,9 +15,9 @@ type
     cbAnni: TComboBox;
     lblInfo1: TLabel;
     qrQuery: TADOQuery;
-    procedure FormShow(Sender: TObject);
     procedure btnReportClick(Sender: TObject);
     procedure btnChiudiClick(Sender: TObject);
+    procedure FormInit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,15 +35,6 @@ uses dmConnection, UReportProdottiConsegnati, UMessaggi;
 {$R *.dfm}
 
 { **************************************************************************** }
-{ *** Finestra *************************************************************** }
-
-procedure TfrmProdottiConsegnati.FormShow(Sender: TObject);
-begin
-  LoadAnni;
-  cbAnni.SetFocus;
-end;
-
-{ **************************************************************************** }
 { *** Componenti ************************************************************* }
 
 procedure TfrmProdottiConsegnati.btnReportClick(Sender: TObject);
@@ -53,7 +44,7 @@ begin
   else
   begin
     Anno := cbAnni.Items[cbAnni.ItemIndex];
-    frmProdottiConsegnati.AnteprimaReport(Anno);
+    frmReportProdottiConsegnati.AnteprimaReport(Anno);
   end;
 end;
 
@@ -69,7 +60,7 @@ procedure TfrmProdottiConsegnati.LoadAnni;
 begin
   cbAnni.Clear;
   cbAnni.Items.Add(' ');
-  qrQuery.SQL.Text := 'SELECT DISTINCT [Anno] FROM [Prodotti_Ordinati] ORDER BY [Anno]';
+  qrQuery.SQL.Text := 'SELECT DISTINCT [Anno] FROM [OrdiniMagazzino] ORDER BY [Anno]';
   qrQuery.Active := True;
   qrQuery.First;
   while not qrQuery.Eof do
@@ -79,6 +70,12 @@ begin
   end;
   qrQuery.Active := False;
   cbAnni.ItemIndex := 0;
+end;
+
+procedure TfrmProdottiConsegnati.FormInit(Sender: TObject);
+begin
+  LoadAnni;
+  cbAnni.SetFocus;
 end;
 
 end.

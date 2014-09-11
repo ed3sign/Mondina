@@ -40,17 +40,16 @@ implementation
 
 procedure TfrmReportProdottiConsegnati.AnteprimaReport(Anno: string);
 begin
-  qrProdotti.SQL.Text := 'SELECT [Prodotti].[Nome], [Prodotti].[Fornitore], [Prodotti_Ordinati].[QtaOrdinata], ' +
-                                '[Prodotti_Ordinati].[QtaOrdinata] * [Prodotti].[CostoUnitario] AS [QtaSpesa] ' +
-                         'FROM [Prodotti] INNER JOIN [Prodotti_Ordinati] ' +
-                              'ON [Prodotti].[Codice] = [Prodotti_Ordinati].[CodProdotto] ' +
-                         'WHERE [Prodotti_Ordinati].[Anno] = ' + Anno + ' ' +
-                         'ORDER BY [Fornitore], [Nome]';
+  qrProdotti.SQL.Text := 'SELECT [OrdiniMagazzino].[NomeProdotto], [OrdiniMagazzino].[Fornitore], [OrdiniMagazzino].[CostoUnitario]  ' +
+                         ' FROM [OrdiniMagazzino] ' +
+                         ' WHERE [OrdiniMagazzino].[Consegnato] = ''Consegnato'' AND [OrdiniMagazzino].[Anno]=' + Anno +
+                         ' ORDER BY [OrdiniMagazzino].[NomeProdotto], [OrdiniMagazzino].[CostoUnitario];';
 
   qrProdotti.Active := True;
   lblInfo1.Caption := 'Prodotti Ordinati - ' + Anno;
   qrReport.PreviewModal;
   qrProdotti.Active := False;
 end;
+
 
 end.

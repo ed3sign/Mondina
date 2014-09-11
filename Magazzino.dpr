@@ -52,7 +52,7 @@ uses
   UCreaProdotto in 'UCreaProdotto.pas' {frmCreaProdotto},
   UAssociaProdottiFornitori in 'UAssociaProdottiFornitori.pas' {frmAssociaProdottiFornitori},
   UReportProdottiConsegnati in 'UReportProdottiConsegnati.pas' {frmReportProdottiConsegnati},
-  UVisProdottiConsegnati in '..\UVisProdottiConsegnati.pas' {frmProdottiConsegnati};
+  UVisProdottiConsegnati in 'UVisProdottiConsegnati.pas' {frmProdottiConsegnati};
 
 {$R *.res}
 

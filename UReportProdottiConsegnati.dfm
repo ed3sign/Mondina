@@ -1,8 +1,8 @@
 object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
-  Left = 343
-  Top = 119
+  Left = 396
+  Top = 240
   BorderStyle = bsDialog
-  Caption = 'Report Prodotti Sotto Soglia'
+  Caption = 'Report Ordini - Prodotti Consegnati'
   ClientHeight = 666
   ClientWidth = 1163
   Color = clBtnFace
@@ -86,7 +86,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
       object lblInfo1: TQRLabel
         Left = 16
         Top = 16
-        Width = 150
+        Width = 203
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -95,14 +95,14 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333330000
-          42.333333333333330000
-          396.875000000000000000)
+          42.333333333333340000
+          42.333333333333340000
+          537.104166666666800000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'Prodotti Sotto Soglia'
+        Caption = 'Ordini - Prodotti Consegnati'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -117,7 +117,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
       object lblInfo2: TQRLabel
         Left = 16
         Top = 48
-        Width = 57
+        Width = 98
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -126,14 +126,14 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333330000
+          42.333333333333340000
           127.000000000000000000
-          150.812500000000000000)
+          259.291666666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'Prodotto'
+        Caption = 'Nome Prodotto'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -146,9 +146,9 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblInfo6: TQRLabel
-        Left = 840
+        Left = 792
         Top = 48
-        Width = 68
+        Width = 62
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -157,14 +157,14 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2222.500000000000000000
+          2095.500000000000000000
           127.000000000000000000
-          179.916666666666700000)
+          164.041666666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'Qt'#224' Totale'
+        Caption = 'Fornitore'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -177,9 +177,9 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblInfo7: TQRLabel
-        Left = 952
+        Left = 936
         Top = 48
-        Width = 41
+        Width = 93
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -188,14 +188,14 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2518.833333333333000000
+          2476.500000000000000000
           127.000000000000000000
-          108.479166666666700000)
+          246.062500000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'Soglia'
+        Caption = 'Costo Unitario'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -252,7 +252,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        66.145833333333330000
+        66.145833333333340000
         2770.187500000000000000)
       BandType = rbDetail
       object lblNome: TQRDBText
@@ -276,7 +276,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         AutoStretch = False
         Color = clWhite
         DataSet = qrProdotti
-        DataField = 'Nome'
+        DataField = 'NomeProdotto'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -288,7 +288,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblQtaTotale: TQRDBText
-        Left = 840
+        Left = 792
         Top = 1
         Width = 100
         Height = 17
@@ -299,16 +299,16 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2222.500000000000000000
+          2095.500000000000000000
           2.645833333333333000
-          264.583333333333300000)
+          264.583333333333400000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = False
         AutoStretch = False
         Color = clWhite
         DataSet = qrProdotti
-        DataField = 'QtaTotale'
+        DataField = 'Fornitore'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -320,7 +320,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblSoglia: TQRDBText
-        Left = 952
+        Left = 936
         Top = 1
         Width = 75
         Height = 17
@@ -331,7 +331,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2518.833333333333000000
+          2476.500000000000000000
           2.645833333333333000
           198.437500000000000000)
         Alignment = taLeftJustify
@@ -340,7 +340,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         AutoStretch = False
         Color = clWhite
         DataSet = qrProdotti
-        DataField = 'Soglia'
+        DataField = 'CostoUnitario'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

@@ -1,6 +1,6 @@
 object frmProdottiConsegnati: TfrmProdottiConsegnati
-  Left = 791
-  Top = 373
+  Left = 961
+  Top = 350
   Width = 345
   Height = 174
   Caption = 'Prodotti Consegnati'
@@ -11,6 +11,7 @@ object frmProdottiConsegnati: TfrmProdottiConsegnati
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FormInit
   PixelsPerInch = 96
   TextHeight = 13
   object img1: TImage
@@ -96,6 +97,7 @@ object frmProdottiConsegnati: TfrmProdottiConsegnati
     Height = 25
     Caption = 'Report'
     TabOrder = 0
+    OnClick = btnReportClick
   end
   object btnChiudi: TButton
     Left = 248
@@ -104,6 +106,7 @@ object frmProdottiConsegnati: TfrmProdottiConsegnati
     Height = 25
     Caption = 'Chiudi'
     TabOrder = 1
+    OnClick = btnChiudiClick
   end
   object gbInfo: TGroupBox
     Left = 64
