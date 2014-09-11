@@ -12,7 +12,6 @@ type
     qrReport: TQuickRep;
     qrbTitolo: TQRBand;
     lblInfo1: TQRLabel;
-    QRPDFShape1: TQRPDFShape;
     lblInfo2: TQRLabel;
     lblInfo3: TQRLabel;
     lblInfo4: TQRLabel;
@@ -20,15 +19,11 @@ type
     lblNome: TQRDBText;
     lblFornitore: TQRDBText;
     lblQtaOrdinata: TQRDBText;
-    QRPDFShape2: TQRPDFShape;
     qrProdotti: TADOQuery;
     lblQtaSpesa: TQRDBText;
     QRLabel1: TQRLabel;
     QRSysData1: TQRSysData;
-    QRExcelFilter1: TQRExcelFilter;
-    QRPDFFilter1: TQRPDFFilter;
     QRTextFilter1: TQRTextFilter;
-    QRRTFFilter1: TQRRTFFilter;
   private
     { Private declarations }
   public

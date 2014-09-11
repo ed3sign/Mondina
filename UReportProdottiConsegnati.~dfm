@@ -1,6 +1,6 @@
 object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
-  Left = 250
-  Top = 88
+  Left = 343
+  Top = 119
   BorderStyle = bsDialog
   Caption = 'Report Prodotti Sotto Soglia'
   ClientHeight = 666

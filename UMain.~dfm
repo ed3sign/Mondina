@@ -1,6 +1,6 @@
 object frmMain: TfrmMain
-  Left = 764
-  Top = 117
+  Left = 906
+  Top = 152
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Magazzino - Utente Non Autenticato'

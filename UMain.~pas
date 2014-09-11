@@ -406,7 +406,7 @@ end;
 
 procedure TfrmMain.mmProdottiConsegnatiClick(Sender: TObject);
 begin
-  frmReportProdottiConsegnati.ShowModal;
+  frmProdottiConsegnati.ShowModal;
 end;
 
 { **************************************************************************** }

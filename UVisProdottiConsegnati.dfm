@@ -1,10 +1,9 @@
-object frmProdottiOrdinati: TfrmProdottiOrdinati
-  Left = 349
-  Top = 182
-  BorderStyle = bsDialog
-  Caption = 'Prodotti Ordinati'
-  ClientHeight = 137
-  ClientWidth = 333
+object frmProdottiConsegnati: TfrmProdottiConsegnati
+  Left = 791
+  Top = 373
+  Width = 345
+  Height = 174
+  Caption = 'Prodotti Consegnati'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,8 +11,6 @@ object frmProdottiOrdinati: TfrmProdottiOrdinati
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object img1: TImage
@@ -98,8 +95,7 @@ object frmProdottiOrdinati: TfrmProdottiOrdinati
     Width = 75
     Height = 25
     Caption = 'Report'
-    TabOrder = 1
-    OnClick = btnReportClick
+    TabOrder = 0
   end
   object btnChiudi: TButton
     Left = 248
@@ -107,15 +103,14 @@ object frmProdottiOrdinati: TfrmProdottiOrdinati
     Width = 75
     Height = 25
     Caption = 'Chiudi'
-    TabOrder = 2
-    OnClick = btnChiudiClick
+    TabOrder = 1
   end
   object gbInfo: TGroupBox
     Left = 64
     Top = 16
     Width = 257
     Height = 81
-    TabOrder = 0
+    TabOrder = 2
     object lblInfo1: TLabel
       Left = 16
       Top = 24

@@ -1,0 +1,31 @@
+unit UVisProdottiConsegnati;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ADODB, StdCtrls, ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    img1: TImage;
+    btnReport: TButton;
+    btnChiudi: TButton;
+    gbInfo: TGroupBox;
+    lblInfo1: TLabel;
+    cbAnni: TComboBox;
+    qrQuery: TADOQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+end.

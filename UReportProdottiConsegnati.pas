@@ -16,17 +16,13 @@ type
     qrbDettagli: TQRBand;
     lblNome: TQRDBText;
     qrProdotti: TADOQuery;
-    lblInfo6: TQRLabel;
-    lblQtaTotale: TQRDBText;
-    lblInfo7: TQRLabel;
-    lblSoglia: TQRDBText;
     QRSysData1: TQRSysData;
     QRTextFilter1: TQRTextFilter;
   private
     { Private declarations }
   public
     { Public declarations }
-    procedure AnteprimaReport;
+    procedure AnteprimaReport(Anno: string);
   end;
 
 var
@@ -34,26 +30,27 @@ var
 
 implementation
 
-uses dmConnection;
-
 {$R *.dfm}
 
-{ TfrmReportMagazzino1 }
+{ TfrmReportMagazzino4 }
+
 
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
-procedure TfrmReportProdottiConsegnati.AnteprimaReport;
+procedure TfrmReportProdottiConsegnati.AnteprimaReport(Anno: string);
 begin
-  qrProdotti.SQL.Text := 'SELECT * FROM [Prodotti] ' +
-                         'WHERE [QtaTotale] < [Soglia] ' +
-                         'ORDER BY [Nome]';
+  qrProdotti.SQL.Text := 'SELECT [Prodotti].[Nome], [Prodotti].[Fornitore], [Prodotti_Ordinati].[QtaOrdinata], ' +
+                                '[Prodotti_Ordinati].[QtaOrdinata] * [Prodotti].[CostoUnitario] AS [QtaSpesa] ' +
+                         'FROM [Prodotti] INNER JOIN [Prodotti_Ordinati] ' +
+                              'ON [Prodotti].[Codice] = [Prodotti_Ordinati].[CodProdotto] ' +
+                         'WHERE [Prodotti_Ordinati].[Anno] = ' + Anno + ' ' +
+                         'ORDER BY [Fornitore], [Nome]';
 
   qrProdotti.Active := True;
-  lblInfo1.Caption := 'Prodotti Sotto Soglia - ' + DateToStr(Date);
+  lblInfo1.Caption := 'Prodotti Ordinati - ' + Anno;
   qrReport.PreviewModal;
   qrProdotti.Active := False;
 end;
 
 end.
-

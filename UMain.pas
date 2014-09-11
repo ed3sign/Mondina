@@ -126,7 +126,8 @@ uses ULogin, UDatiPersonali, UVisCassetti, UCreaProdotto,
   UReportProdottiSottoSoglia, UVisProdottiPerAssistente,
   UVisProdottiPersiSelPagina, UVisProdottiPersi, UProdottiOrdinati,
   UVisProdottiRichiestiStudi, UProdottiRichiestiStudi, UVisOrdiniMag,
-  UAssociaProdottiFornitori, UReportProdottiConsegnati;
+  UAssociaProdottiFornitori, UReportProdottiConsegnati,
+  UVisProdottiConsegnati;
 
 {$R *.dfm}
 
@@ -406,7 +407,7 @@ end;
 
 procedure TfrmMain.mmProdottiConsegnatiClick(Sender: TObject);
 begin
-  frmReportProdottiConsegnati.ShowModal;
+  frmProdottiConsegnati.ShowModal;
 end;
 
 { **************************************************************************** }
