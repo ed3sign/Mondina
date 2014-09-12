@@ -52,7 +52,9 @@ uses
   UCreaProdotto in 'UCreaProdotto.pas' {frmCreaProdotto},
   UAssociaProdottiFornitori in 'UAssociaProdottiFornitori.pas' {frmAssociaProdottiFornitori},
   UReportProdottiConsegnati in 'UReportProdottiConsegnati.pas' {frmReportProdottiConsegnati},
-  UVisProdottiConsegnati in 'UVisProdottiConsegnati.pas' {frmProdottiConsegnati};
+  UVisProdottiConsegnati in 'UVisProdottiConsegnati.pas' {frmProdottiConsegnati},
+  UProdottiNonConsegnati in 'UProdottiNonConsegnati.pas' {frmProdottiNonConsegnati},
+  UReportProdottiNonConsegnati in 'UReportProdottiNonConsegnati.pas' {frmReportProdottiNonConsegnati};
 
 {$R *.res}
 
@@ -106,6 +108,8 @@ begin
   Application.CreateForm(TfrmAssociaProdottiFornitori, frmAssociaProdottiFornitori);
   Application.CreateForm(TfrmReportProdottiConsegnati, frmReportProdottiConsegnati);
   Application.CreateForm(TfrmProdottiConsegnati, frmProdottiConsegnati);
+  Application.CreateForm(TfrmProdottiNonConsegnati, frmProdottiNonConsegnati);
+  Application.CreateForm(TfrmReportProdottiNonConsegnati, frmReportProdottiNonConsegnati);
   Application.Run;
 end.
 

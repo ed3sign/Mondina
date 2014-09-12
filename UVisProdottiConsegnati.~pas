@@ -15,7 +15,6 @@ type
     cbAnni: TComboBox;
     lblInfo1: TLabel;
     qrQuery: TADOQuery;
-    procedure FormInit(Sender: TObject);
     procedure btnReportClick(Sender: TObject);
     procedure btnChiudiClick(Sender: TObject);
     procedure FormInit(Sender: TObject);

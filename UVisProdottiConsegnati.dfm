@@ -1,6 +1,6 @@
 object frmProdottiConsegnati: TfrmProdottiConsegnati
-  Left = 961
-  Top = 350
+  Left = 1082
+  Top = 612
   Width = 345
   Height = 174
   Caption = 'Prodotti Consegnati'

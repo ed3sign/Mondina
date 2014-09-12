@@ -1,10 +1,9 @@
-object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
-  Left = 1166
-  Top = 308
-  BorderStyle = bsDialog
-  Caption = 'Prodotti Richiesti dagli Studi'
-  ClientHeight = 234
-  ClientWidth = 334
+object frmProdottiNonConsegnati: TfrmProdottiNonConsegnati
+  Left = 1089
+  Top = 214
+  Width = 351
+  Height = 241
+  Caption = 'Ordini Non Consegnati'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,8 +11,7 @@ object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
-  OnShow = FormShow
+  OnShow = FormInit
   PixelsPerInch = 96
   TextHeight = 13
   object img1: TImage
@@ -94,7 +92,7 @@ object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
   end
   object btnReport: TButton
     Left = 168
-    Top = 200
+    Top = 168
     Width = 75
     Height = 25
     Caption = 'Report'
@@ -103,7 +101,7 @@ object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
   end
   object btnChiudi: TButton
     Left = 248
-    Top = 200
+    Top = 168
     Width = 75
     Height = 25
     Caption = 'Chiudi'
@@ -114,7 +112,7 @@ object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
     Left = 64
     Top = 16
     Width = 257
-    Height = 177
+    Height = 137
     TabOrder = 2
     object lblInfo1: TLabel
       Left = 16
@@ -126,16 +124,9 @@ object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
     object lblInfo2: TLabel
       Left = 16
       Top = 72
-      Width = 30
+      Width = 41
       Height = 13
-      Caption = 'Studio'
-    end
-    object lblInfo3: TLabel
-      Left = 16
-      Top = 120
-      Width = 43
-      Height = 13
-      Caption = 'Tipologia'
+      Caption = 'Fornitore'
     end
     object cbAnni: TComboBox
       Left = 16
@@ -146,7 +137,7 @@ object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
       ItemHeight = 13
       TabOrder = 0
     end
-    object cbStudi: TComboBox
+    object cbFornitore: TComboBox
       Left = 16
       Top = 88
       Width = 225
@@ -154,15 +145,6 @@ object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
       Style = csDropDownList
       ItemHeight = 13
       TabOrder = 1
-    end
-    object cbTipologie: TComboBox
-      Left = 16
-      Top = 136
-      Width = 225
-      Height = 21
-      Style = csDropDownList
-      ItemHeight = 13
-      TabOrder = 2
     end
   end
   object qrQuery: TADOQuery

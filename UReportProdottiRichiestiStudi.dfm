@@ -1,6 +1,6 @@
 object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
-  Left = 524
-  Top = 134
+  Left = 567
+  Top = 116
   BorderStyle = bsDialog
   Caption = 'Report Prodotti Richiesti dagli Studi'
   ClientHeight = 667
@@ -57,27 +57,14 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
       100.000000000000000000
       0.000000000000000000)
     PrinterSettings.Copies = 1
-    PrinterSettings.OutputBin = Auto
     PrinterSettings.Duplex = False
     PrinterSettings.FirstPage = 0
     PrinterSettings.LastPage = 0
-    PrinterSettings.UseStandardprinter = False
-    PrinterSettings.UseCustomBinCode = False
-    PrinterSettings.CustomBinCode = 0
-    PrinterSettings.ExtendedDuplex = 0
-    PrinterSettings.UseCustomPaperCode = False
-    PrinterSettings.CustomPaperCode = 0
-    PrinterSettings.PrintMetaFile = False
-    PrinterSettings.PrintQuality = 0
-    PrinterSettings.Collate = 0
-    PrinterSettings.ColorOption = 0
+    PrinterSettings.OutputBin = Auto
     PrintIfEmpty = True
     SnapToGrid = True
     Units = MM
     Zoom = 100
-    PrevFormStyle = fsNormal
-    PreviewInitialState = wsNormal
-    PrevInitialZoom = qrZoomToFit
     object qrbTitolo: TQRBand
       Left = 38
       Top = 38
@@ -90,14 +77,11 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = False
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        304.270833333333300000
+        304.270833333333400000
         1899.708333333333000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbTitle
       object lblInfo1: TQRLabel
         Left = 16
@@ -111,8 +95,8 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333330000
-          42.333333333333330000
+          42.333333333333340000
+          42.333333333333340000
           539.750000000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -129,24 +113,6 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Transparent = True
         WordWrap = True
         FontSize = 10
-      end
-      object QRPDFShape1: TQRPDFShape
-        Left = 16
-        Top = 35
-        Width = 689
-        Height = 5
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          13.229166666666670000
-          42.333333333333330000
-          92.604166666666670000
-          1822.979166666667000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
       end
       object lblInfo2: TQRLabel
         Left = 176
@@ -191,7 +157,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333330000
+          42.333333333333340000
           254.000000000000000000
           161.395833333333300000)
         Alignment = taLeftJustify
@@ -313,7 +279,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333330000
+          42.333333333333340000
           127.000000000000000000
           121.708333333333300000)
         Alignment = taLeftJustify
@@ -344,7 +310,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333330000
+          42.333333333333340000
           169.333333333333300000
           171.979166666666700000)
         Alignment = taLeftJustify
@@ -363,24 +329,6 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         WordWrap = True
         FontSize = 8
       end
-      object QRPDFShape3: TQRPDFShape
-        Left = 16
-        Top = 83
-        Width = 689
-        Height = 5
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          13.229166666666670000
-          42.333333333333330000
-          219.604166666666700000
-          1822.979166666667000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
-      end
     end
     object qrbDettagli: TQRBand
       Left = 38
@@ -394,14 +342,11 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = True
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        66.145833333333330000
+        66.145833333333340000
         1899.708333333333000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbDetail
       object lblNome: TQRDBText
         Left = 176
@@ -499,24 +444,6 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         WordWrap = True
         FontSize = 8
       end
-      object QRPDFShape2: TQRPDFShape
-        Left = 16
-        Top = 18
-        Width = 689
-        Height = 1
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          2.645833333333333000
-          42.333333333333330000
-          47.625000000000000000
-          1822.979166666667000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
-      end
       object lblQtaSpesa: TQRDBText
         Left = 608
         Top = 1
@@ -577,18 +504,5 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
   object QRTextFilter1: TQRTextFilter
     Left = 93
     Top = 11
-  end
-  object QRPDFFilter1: TQRPDFFilter
-    CompressionOn = False
-    Left = 133
-    Top = 11
-  end
-  object QRExcelFilter1: TQRExcelFilter
-    Left = 173
-    Top = 11
-  end
-  object QRRTFFilter1: TQRRTFFilter
-    Left = 213
-    Top = 10
   end
 end

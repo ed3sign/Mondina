@@ -1,6 +1,6 @@
 object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
-  Left = 396
-  Top = 240
+  Left = 342
+  Top = 122
   BorderStyle = bsDialog
   Caption = 'Report Ordini - Prodotti Consegnati'
   ClientHeight = 666
@@ -95,9 +95,9 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
-          42.333333333333340000
-          537.104166666666800000)
+          42.333333333333330000
+          42.333333333333330000
+          537.104166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -126,7 +126,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
+          42.333333333333330000
           127.000000000000000000
           259.291666666666700000)
         Alignment = taLeftJustify
@@ -252,7 +252,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        66.145833333333340000
+        66.145833333333330000
         2770.187500000000000000)
       BandType = rbDetail
       object lblNome: TQRDBText

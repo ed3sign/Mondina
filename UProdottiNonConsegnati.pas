@@ -1,0 +1,109 @@
+unit UProdottiNonConsegnati;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ADODB, StdCtrls, ExtCtrls;
+
+type
+  TfrmProdottiNonConsegnati = class(TForm)
+    img1: TImage;
+    btnReport: TButton;
+    btnChiudi: TButton;
+    gbInfo: TGroupBox;
+    lblInfo1: TLabel;
+    cbAnni: TComboBox;
+    qrQuery: TADOQuery;
+    lblInfo2: TLabel;
+    cbFornitore: TComboBox;
+    procedure FormInit(Sender: TObject);
+    procedure btnReportClick(Sender: TObject);
+    procedure btnChiudiClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure LoadAnni;
+    procedure LoadFornitore;    
+  end;
+
+var
+  frmProdottiNonConsegnati: TfrmProdottiNonConsegnati;
+
+implementation
+
+{$R *.dfm}
+
+uses dmConnection, UMessaggi, UHashTable, UReportProdottiNonConsegnati;
+
+var
+  hsAssociazioneAS: THashTable;
+
+{ **************************************************************************** }
+{ *** Finestra *************************************************************** }
+
+procedure TfrmProdottiNonConsegnati.FormInit(Sender: TObject);
+begin
+  LoadAnni;
+  LoadFornitore;
+  cbAnni.SetFocus;
+end;
+
+{ **************************************************************************** }
+{ *** Componenti ************************************************************* }
+
+procedure TfrmProdottiNonConsegnati.btnReportClick(Sender: TObject);
+var Anno, Fornitore:string;
+begin
+  if cbAnni.ItemIndex = 0 then ShowMessage(MSG_SELEZIONARE_ANNO)
+  else if cbFornitore.ItemIndex = 0 then ShowMessage('Selezionare Fornitore')
+  else
+    begin
+      Anno := cbAnni.Items[cbAnni.ItemIndex];
+      Fornitore := cbFornitore.Items[cbFornitore.ItemIndex];
+      frmReportProdottiNonConsegnati.AnteprimaReport(Anno, Fornitore);
+    end
+end;
+
+procedure TfrmProdottiNonConsegnati.btnChiudiClick(Sender: TObject);
+begin
+  Close;
+end;
+
+{ **************************************************************************** }
+{ *** Load ******************************************************************* }
+
+procedure TfrmProdottiNonConsegnati.LoadAnni;
+begin
+  cbAnni.Clear;
+  cbAnni.Items.Add(' ');
+  qrQuery.SQL.Text := 'SELECT DISTINCT [Anno] FROM [Prodotti_Richiesti_Studi] ORDER BY [Anno]';
+  qrQuery.Active := True;
+  qrQuery.First;
+  while not qrQuery.Eof do
+  begin
+    cbAnni.Items.Add(qrQuery.FieldByName('Anno').AsString);
+    qrQuery.Next;
+  end;
+  qrQuery.Active := False;
+  cbAnni.ItemIndex := 0;
+end;
+
+procedure TfrmProdottiNonConsegnati.LoadFornitore;
+begin
+  cbFornitore.Clear;
+  cbFornitore.Items.Add(' ');
+  qrQuery.SQL.Text := 'SELECT [Fornitore] FROM [Fornitori] ORDER BY [Fornitore]';
+  qrQuery.Active := True;
+  qrQuery.First;
+  while not qrQuery.Eof do
+  begin
+    cbFornitore.Items.Add(qrQuery.FieldByName('Fornitore').AsString);
+    qrQuery.Next;
+  end;
+  qrQuery.Active := False;
+  cbFornitore.ItemIndex := 0;
+end;
+
+end.

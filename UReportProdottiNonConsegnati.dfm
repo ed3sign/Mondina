@@ -1,10 +1,9 @@
-object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
-  Left = 396
-  Top = 240
-  BorderStyle = bsDialog
-  Caption = 'Report Ordini - Prodotti Consegnati'
-  ClientHeight = 666
-  ClientWidth = 1163
+object frmReportProdottiNonConsegnati: TfrmReportProdottiNonConsegnati
+  Left = -8
+  Top = -8
+  Width = 1616
+  Height = 876
+  Caption = 'Ordini Non Consegnati'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +11,6 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
   Scaled = False
   PixelsPerInch = 96
   TextHeight = 13
@@ -97,7 +95,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
           44.979166666666670000
           42.333333333333340000
           42.333333333333340000
-          537.104166666666800000)
+          537.104166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -145,41 +143,10 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         WordWrap = True
         FontSize = 8
       end
-      object lblInfo6: TQRLabel
-        Left = 792
-        Top = 48
-        Width = 62
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          2095.500000000000000000
-          127.000000000000000000
-          164.041666666666700000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = True
-        AutoStretch = False
-        Caption = 'Fornitore'
-        Color = clWhite
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
       object lblInfo7: TQRLabel
         Left = 936
         Top = 48
-        Width = 93
+        Width = 83
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -190,12 +157,12 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
           44.979166666666670000
           2476.500000000000000000
           127.000000000000000000
-          246.062500000000000000)
+          219.604166666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'Costo Unitario'
+        Caption = 'Qta Ordinata'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -287,38 +254,6 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         WordWrap = True
         FontSize = 8
       end
-      object lblQtaTotale: TQRDBText
-        Left = 792
-        Top = 1
-        Width = 100
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          2095.500000000000000000
-          2.645833333333333000
-          264.583333333333400000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = False
-        AutoStretch = False
-        Color = clWhite
-        DataSet = qrProdotti
-        DataField = 'Fornitore'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
       object lblSoglia: TQRDBText
         Left = 936
         Top = 1
@@ -340,7 +275,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         AutoStretch = False
         Color = clWhite
         DataSet = qrProdotti
-        DataField = 'CostoUnitario'
+        DataField = 'qtaOrdinata'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

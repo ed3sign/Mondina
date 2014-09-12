@@ -1,10 +1,10 @@
 object frmMain: TfrmMain
-  Left = 906
-  Top = 152
+  Left = 903
+  Top = 149
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Magazzino - Utente Non Autenticato'
-  ClientHeight = 34
+  ClientHeight = 40
   ClientWidth = 580
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -223,9 +223,14 @@ object frmMain: TfrmMain
         OnClick = mmProdRichiestiStudiClick
       end
       object mmProdottiConsegnati: TMenuItem
-        Caption = 'Prodotti Consegnati'
+        Caption = 'Ordini Consegnati'
         ImageIndex = 6
         OnClick = mmProdottiConsegnatiClick
+      end
+      object mmProdottiNonConsegnati: TMenuItem
+        Caption = 'Ordini Non Consegnati'
+        ImageIndex = 6
+        OnClick = mmProdottiNonConsegnatiClick
       end
     end
     object mmStrumenti: TMenuItem

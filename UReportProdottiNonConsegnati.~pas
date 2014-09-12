@@ -1,4 +1,4 @@
-unit UReportProdottiConsegnati;
+unit UReportProdottiNonConsegnati;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   QRPDFFilt;
 
 type
-  TfrmReportProdottiConsegnati = class(TForm)
+  TfrmReportProdottiNonConsegnati = class(TForm)
     qrReport: TQuickRep;
     qrbTitolo: TQRBand;
     lblInfo1: TQRLabel;
@@ -22,11 +22,11 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure AnteprimaReport(Anno: string);
+    procedure AnteprimaReport(Anno, Fornitore: string);
   end;
 
 var
-  frmReportProdottiConsegnati: TfrmReportProdottiConsegnati;
+  frmReportProdottiNonConsegnati: TfrmReportProdottiNonConsegnati;
 
 implementation
 
@@ -38,15 +38,17 @@ implementation
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
-procedure TfrmReportProdottiConsegnati.AnteprimaReport(Anno: string);
+procedure TfrmReportProdottiNonConsegnati.AnteprimaReport(Anno, Fornitore: string);
 begin
-  qrProdotti.SQL.Text := 'SELECT [OrdiniMagazzino].[NomeProdotto], [OrdiniMagazzino].[Fornitore], [OrdiniMagazzino].[CostoUnitario]  ' +
+  qrProdotti.SQL.Text := 'SELECT [OrdiniMagazzino].[NomeProdotto], [OrdiniMagazzino].[qtaOrdinata] ' +
                          ' FROM [OrdiniMagazzino] ' +
-                         ' WHERE [OrdiniMagazzino].[Consegnato] = ''Consegnato'' AND [OrdiniMagazzino].[Anno]=' + Anno +
-                         ' ORDER BY [OrdiniMagazzino].[NomeProdotto], [OrdiniMagazzino].[CostoUnitario];';
+                         ' WHERE [OrdiniMagazzino].[Consegnato] = ''Non Consegnato'' AND [OrdiniMagazzino].[Fornitore]="' + Fornitore + '"' + 
+                         ' AND [OrdiniMagazzino].[Anno] = ' + Anno +
+                         ' ORDER BY [OrdiniMagazzino].[NomeProdotto], [OrdiniMagazzino].[qtaOrdinata];';
 
+  ShowMessage( qrProdotti.SQL.Text);
   qrProdotti.Active := True;
-  lblInfo1.Caption := 'Prodotti Ordinati - ' + Anno;
+  lblInfo1.Caption := 'Prodotti Non Consegnati - Fornitore ' + Fornitore;
   qrReport.PreviewModal;
   qrProdotti.Active := False;
 end;
