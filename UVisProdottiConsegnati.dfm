@@ -1,9 +1,9 @@
 object frmProdottiConsegnati: TfrmProdottiConsegnati
-  Left = 1082
-  Top = 612
+  Left = 525
+  Top = 315
   Width = 345
   Height = 174
-  Caption = 'Prodotti Consegnati'
+  Caption = 'Ordini Consegnati'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

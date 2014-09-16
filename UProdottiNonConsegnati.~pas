@@ -61,7 +61,7 @@ begin
   else
     begin
       Anno := cbAnni.Items[cbAnni.ItemIndex];
-      Fornitore := cbFornitore.Items[cbAnni.ItemIndex];
+      Fornitore := cbFornitore.Items[cbFornitore.ItemIndex];
       frmReportProdottiNonConsegnati.AnteprimaReport(Anno, Fornitore);
     end
 end;

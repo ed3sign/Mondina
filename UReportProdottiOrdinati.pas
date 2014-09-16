@@ -40,14 +40,14 @@ implementation
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
-procedure TfrmReportProdottiOrdinati.AnteprimaReport(Anno:string);
+procedure TfrmReportProdottiOrdinati.AnteprimaReport(Anno: string);
 begin
-  qrProdotti.SQL.Text := 'SELECT [Prodotti].[Nome], [Prodotti_Ordinati].[QtaOrdinata], ' +
+   qrProdotti.SQL.Text := 'SELECT [Prodotti].[Nome], [Prodotti_Ordinati].[QtaOrdinata] ' +
                          ' FROM [Prodotti] INNER JOIN [Prodotti_Ordinati] ' +
                               'ON [Prodotti].[Codice] = [Prodotti_Ordinati].[CodProdotto] ' +
                          ' WHERE [Prodotti_Ordinati].[Anno] = ' + Anno + ' ' +
                          ' ORDER BY [Prodotti].[Nome]';
-  ShowMessage(qrProdotti.SQL.Text);
+  //ShowMessage(qrProdotti.SQL.Text);
   qrProdotti.Active := True;
   lblInfo1.Caption := 'Prodotti Ordinati - ' + Anno;
   qrReport.PreviewModal;

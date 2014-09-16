@@ -54,7 +54,8 @@ uses
   UReportProdottiConsegnati in 'UReportProdottiConsegnati.pas' {frmReportProdottiConsegnati},
   UVisProdottiConsegnati in 'UVisProdottiConsegnati.pas' {frmProdottiConsegnati},
   UProdottiNonConsegnati in 'UProdottiNonConsegnati.pas' {frmProdottiNonConsegnati},
-  UReportProdottiNonConsegnati in 'UReportProdottiNonConsegnati.pas' {frmReportProdottiNonConsegnati};
+  UReportProdottiNonConsegnati in 'UReportProdottiNonConsegnati.pas' {frmReportProdottiNonConsegnati},
+  UReportProdottiOrdinati in 'UReportProdottiOrdinati.pas' {frmReportProdottiOrdinati};
 
 {$R *.res}
 
@@ -110,6 +111,7 @@ begin
   Application.CreateForm(TfrmProdottiConsegnati, frmProdottiConsegnati);
   Application.CreateForm(TfrmProdottiNonConsegnati, frmProdottiNonConsegnati);
   Application.CreateForm(TfrmReportProdottiNonConsegnati, frmReportProdottiNonConsegnati);
+  Application.CreateForm(TfrmReportProdottiOrdinati, frmReportProdottiOrdinati);
   Application.Run;
 end.
 

@@ -1,9 +1,9 @@
 object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
-  Left = 697
-  Top = 234
+  Left = 393
+  Top = 267
   BorderStyle = bsDialog
   Caption = 'Report Prodotti Ordinati'
-  ClientHeight = 535
+  ClientHeight = 598
   ClientWidth = 818
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -95,9 +95,9 @@ object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
-          42.333333333333340000
-          320.145833333333400000)
+          42.333333333333330000
+          42.333333333333330000
+          320.145833333333300000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -126,7 +126,7 @@ object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
+          42.333333333333330000
           127.000000000000000000
           150.812500000000000000)
         Alignment = taLeftJustify
@@ -146,7 +146,7 @@ object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
         FontSize = 8
       end
       object lblInfo4: TQRLabel
-        Left = 560
+        Left = 592
         Top = 48
         Width = 83
         Height = 17
@@ -157,7 +157,7 @@ object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1481.666666666667000000
+          1566.333333333333000000
           127.000000000000000000
           219.604166666666700000)
         Alignment = taLeftJustify
@@ -221,7 +221,7 @@ object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        66.145833333333340000
+        66.145833333333330000
         1899.708333333333000000)
       BandType = rbDetail
       object lblNome: TQRDBText
@@ -257,7 +257,7 @@ object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
         FontSize = 8
       end
       object lblQtaOrdinata: TQRDBText
-        Left = 568
+        Left = 592
         Top = 1
         Width = 75
         Height = 17
@@ -268,7 +268,7 @@ object frmReportProdottiOrdinati: TfrmReportProdottiOrdinati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1502.833333333333000000
+          1566.333333333333000000
           2.645833333333333000
           198.437500000000000000)
         Alignment = taLeftJustify

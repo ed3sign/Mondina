@@ -1,6 +1,6 @@
 object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
-  Left = 342
-  Top = 122
+  Left = 103
+  Top = 142
   BorderStyle = bsDialog
   Caption = 'Report Ordini - Prodotti Consegnati'
   ClientHeight = 666
@@ -146,7 +146,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblInfo6: TQRLabel
-        Left = 792
+        Left = 776
         Top = 48
         Width = 62
         Height = 17
@@ -157,7 +157,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2095.500000000000000000
+          2053.166666666667000000
           127.000000000000000000
           164.041666666666700000)
         Alignment = taLeftJustify
@@ -177,9 +177,9 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblInfo7: TQRLabel
-        Left = 936
+        Left = 920
         Top = 48
-        Width = 93
+        Width = 117
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -188,14 +188,14 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2476.500000000000000000
+          2434.166666666667000000
           127.000000000000000000
-          246.062500000000000000)
+          309.562500000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = 'Costo Unitario'
+        Caption = 'Costo Unitario ('#8364')'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -288,7 +288,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblQtaTotale: TQRDBText
-        Left = 792
+        Left = 776
         Top = 1
         Width = 100
         Height = 17
@@ -299,9 +299,9 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2095.500000000000000000
+          2053.166666666667000000
           2.645833333333333000
-          264.583333333333400000)
+          264.583333333333300000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = False
@@ -320,7 +320,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         FontSize = 8
       end
       object lblSoglia: TQRDBText
-        Left = 936
+        Left = 920
         Top = 1
         Width = 75
         Height = 17
@@ -331,7 +331,7 @@ object frmReportProdottiConsegnati: TfrmReportProdottiConsegnati
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          2476.500000000000000000
+          2434.166666666667000000
           2.645833333333333000
           198.437500000000000000)
         Alignment = taLeftJustify

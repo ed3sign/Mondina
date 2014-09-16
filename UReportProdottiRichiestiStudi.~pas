@@ -55,7 +55,6 @@ begin
     qrProdotti.SQL.Text := qrProdotti.SQL.Text + ' AND [Prodotti].[Tipologia] = ' + QuotedStr(Tipologia) + ' ';
 
   qrProdotti.SQL.Text := qrProdotti.SQL.Text + ' ORDER BY [Prodotti].[Tipologia], [Prodotti].[Nome]';
-  ShowMessage(qrProdotti.SQL.Text);
   qrProdotti.Active := True;
   lblInfo1.Caption := 'Prodotti Richiesti dagli Studi - ' + Anno;
 

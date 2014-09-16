@@ -57,27 +57,14 @@ object frmReportProdottiPerTipologia: TfrmReportProdottiPerTipologia
       100.000000000000000000
       0.000000000000000000)
     PrinterSettings.Copies = 1
-    PrinterSettings.OutputBin = Auto
     PrinterSettings.Duplex = False
     PrinterSettings.FirstPage = 0
     PrinterSettings.LastPage = 0
-    PrinterSettings.UseStandardprinter = False
-    PrinterSettings.UseCustomBinCode = False
-    PrinterSettings.CustomBinCode = 0
-    PrinterSettings.ExtendedDuplex = 0
-    PrinterSettings.UseCustomPaperCode = False
-    PrinterSettings.CustomPaperCode = 0
-    PrinterSettings.PrintMetaFile = False
-    PrinterSettings.PrintQuality = 0
-    PrinterSettings.Collate = 0
-    PrinterSettings.ColorOption = 0
+    PrinterSettings.OutputBin = Auto
     PrintIfEmpty = True
     SnapToGrid = True
     Units = MM
     Zoom = 100
-    PrevFormStyle = fsNormal
-    PreviewInitialState = wsNormal
-    PrevInitialZoom = qrZoomToFit
     object qrbTitolo: TQRBand
       Left = 38
       Top = 38
@@ -90,14 +77,11 @@ object frmReportProdottiPerTipologia: TfrmReportProdottiPerTipologia
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = False
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
         198.437500000000000000
         1899.708333333333000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbPageHeader
       object lblInfo1: TQRLabel
         Left = 16
@@ -129,24 +113,6 @@ object frmReportProdottiPerTipologia: TfrmReportProdottiPerTipologia
         Transparent = True
         WordWrap = True
         FontSize = 10
-      end
-      object QRPDFShape1: TQRPDFShape
-        Left = 16
-        Top = 35
-        Width = 689
-        Height = 5
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          13.229166666666670000
-          42.333333333333330000
-          92.604166666666670000
-          1822.979166666667000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
       end
       object lblInfo2: TQRLabel
         Left = 16
@@ -283,14 +249,11 @@ object frmReportProdottiPerTipologia: TfrmReportProdottiPerTipologia
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = True
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
         66.145833333333330000
         1899.708333333333000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbDetail
       object lblNome: TQRDBText
         Left = 16
@@ -388,24 +351,6 @@ object frmReportProdottiPerTipologia: TfrmReportProdottiPerTipologia
         WordWrap = True
         FontSize = 8
       end
-      object QRPDFShape2: TQRPDFShape
-        Left = 16
-        Top = 18
-        Width = 689
-        Height = 1
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          2.645833333333333000
-          42.333333333333330000
-          47.625000000000000000
-          1822.979166666667000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
-      end
     end
   end
   object qrProdotti: TADOQuery
@@ -431,21 +376,8 @@ object frmReportProdottiPerTipologia: TfrmReportProdottiPerTipologia
     Left = 14
     Top = 14
   end
-  object QRExcelFilter1: TQRExcelFilter
-    Left = 285
-    Top = 11
-  end
-  object QRPDFFilter1: TQRPDFFilter
-    CompressionOn = False
-    Left = 245
-    Top = 11
-  end
   object QRTextFilter1: TQRTextFilter
     Left = 205
-    Top = 11
-  end
-  object QRRTFFilter1: TQRRTFFilter
-    Left = 325
     Top = 11
   end
 end

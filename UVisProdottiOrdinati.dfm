@@ -1,6 +1,6 @@
 object frmProdottiOrdinati: TfrmProdottiOrdinati
-  Left = 966
-  Top = 254
+  Left = 687
+  Top = 127
   BorderStyle = bsDialog
   Caption = 'Prodotti Ordinati'
   ClientHeight = 137

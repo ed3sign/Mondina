@@ -13,11 +13,15 @@ type
     qrbTitolo: TQRBand;
     lblInfo1: TQRLabel;
     lblInfo2: TQRLabel;
+    lblInfo3: TQRLabel;
     lblInfo4: TQRLabel;
     qrbDettagli: TQRBand;
     lblNome: TQRDBText;
+    lblFornitore: TQRDBText;
     lblQtaOrdinata: TQRDBText;
     qrProdotti: TADOQuery;
+    lblQtaSpesa: TQRDBText;
+    QRLabel1: TQRLabel;
     QRSysData1: TQRSysData;
     QRTextFilter1: TQRTextFilter;
   private
@@ -40,10 +44,9 @@ implementation
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
-procedure TfrmReportProdottiOrdinati.AnteprimaReport(Anno:string);
+procedure TfrmReportProdottiOrdinati.AnteprimaReport(Anno: string);
 begin
-
-  qrProdotti.SQL.Text := 'SELECT [Prodotti].[Nome], [Prodotti_Ordinati].[QtaOrdinata], ' +
+   qrProdotti.SQL.Text := 'SELECT [Prodotti].[Nome], [Prodotti_Ordinati].[QtaOrdinata] ' +
                          ' FROM [Prodotti] INNER JOIN [Prodotti_Ordinati] ' +
                               'ON [Prodotti].[Codice] = [Prodotti_Ordinati].[CodProdotto] ' +
                          ' WHERE [Prodotti_Ordinati].[Anno] = ' + Anno + ' ' +

@@ -1,6 +1,6 @@
 object frmProdottiNonConsegnati: TfrmProdottiNonConsegnati
-  Left = 1089
-  Top = 214
+  Left = 570
+  Top = 223
   Width = 351
   Height = 241
   Caption = 'Ordini Non Consegnati'

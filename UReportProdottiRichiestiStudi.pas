@@ -44,7 +44,7 @@ implementation
 
 procedure TfrmReportProdottiRichiestiStudi.AnteprimaReport(Anno, CodStudio, NomeStudio, Tipologia: string);
 begin
-  qrProdotti.SQL.Text := 'SELECT [Prodotti].[Tipologia], [Prodotti].[Nome], [Prodotti_Richiesti_Studi].[QtaRichiesta], ' +
+  qrProdotti.SQL.Text := 'SELECT [Prodotti].[Tipologia], [Prodotti].[Nome], [Prodotti_Richiesti_Studi].[QtaRichiesta] ' +
                          ' FROM [Prodotti] RIGHT OUTER JOIN ([AssociazioneAS] RIGHT OUTER JOIN [Prodotti_Richiesti_Studi] ON ' +
                               '[AssociazioneAS].[Codice] = [Prodotti_Richiesti_Studi].[CodAssociazioneAS]) ON ' +
                               '[Prodotti].[Codice] = [Prodotti_Richiesti_Studi].[CodProdotto] ' +
