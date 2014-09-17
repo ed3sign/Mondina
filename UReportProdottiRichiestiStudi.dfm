@@ -1,6 +1,6 @@
 object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
-  Left = 567
-  Top = 116
+  Left = 408
+  Top = 120
   BorderStyle = bsDialog
   Caption = 'Report Prodotti Richiesti dagli Studi'
   ClientHeight = 667
@@ -115,7 +115,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         FontSize = 10
       end
       object lblInfo2: TQRLabel
-        Left = 176
+        Left = 184
         Top = 96
         Width = 57
         Height = 17
@@ -126,7 +126,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          465.666666666666700000
+          486.833333333333300000
           254.000000000000000000
           150.812500000000000000)
         Alignment = taLeftJustify
@@ -177,7 +177,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         FontSize = 8
       end
       object lblInfo4: TQRLabel
-        Left = 512
+        Left = 568
         Top = 96
         Width = 86
         Height = 17
@@ -188,7 +188,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1354.666666666667000000
+          1502.833333333333000000
           254.000000000000000000
           227.541666666666700000)
         Alignment = taLeftJustify
@@ -196,37 +196,6 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         AutoSize = True
         AutoStretch = False
         Caption = 'Qt'#224' Richiesta'
-        Color = clWhite
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object QRLabel1: TQRLabel
-        Left = 608
-        Top = 96
-        Width = 90
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1608.666666666667000000
-          254.000000000000000000
-          238.125000000000000000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = True
-        AutoStretch = False
-        Caption = 'Qt'#224' Spesa ('#8364')'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -349,7 +318,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         1899.708333333333000000)
       BandType = rbDetail
       object lblNome: TQRDBText
-        Left = 176
+        Left = 184
         Top = 1
         Width = 321
         Height = 17
@@ -360,7 +329,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          465.666666666666700000
+          486.833333333333300000
           2.645833333333333000
           849.312500000000000000)
         Alignment = taLeftJustify
@@ -413,7 +382,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         FontSize = 8
       end
       object lblQtaOrdinata: TQRDBText
-        Left = 512
+        Left = 568
         Top = 1
         Width = 75
         Height = 17
@@ -424,7 +393,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          1354.666666666667000000
+          1502.833333333333000000
           2.645833333333333000
           198.437500000000000000)
         Alignment = taLeftJustify
@@ -434,38 +403,6 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Color = clWhite
         DataSet = qrProdotti
         DataField = 'QtaRichiesta'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
-        Transparent = True
-        WordWrap = True
-        FontSize = 8
-      end
-      object lblQtaSpesa: TQRDBText
-        Left = 608
-        Top = 1
-        Width = 100
-        Height = 17
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          44.979166666666670000
-          1608.666666666667000000
-          2.645833333333333000
-          264.583333333333300000)
-        Alignment = taLeftJustify
-        AlignToBand = False
-        AutoSize = False
-        AutoStretch = False
-        Color = clWhite
-        DataSet = qrProdotti
-        DataField = 'QtaSpesa'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

@@ -17,13 +17,11 @@ type
     lblInfo2: TQRLabel;
     lblInfo3: TQRLabel;
     lblInfo4: TQRLabel;
-    QRLabel1: TQRLabel;
     QRSysData1: TQRSysData;
     qrbDettagli: TQRBand;
     lblNome: TQRDBText;
     lblFornitore: TQRDBText;
     lblQtaOrdinata: TQRDBText;
-    lblQtaSpesa: TQRDBText;
     lblInfo5: TQRLabel;
     lblInfo6: TQRLabel;
   private

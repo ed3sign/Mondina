@@ -80,7 +80,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        304.270833333333400000
+        304.270833333333300000
         1899.708333333333000000)
       BandType = rbTitle
       object lblInfo1: TQRLabel
@@ -95,8 +95,8 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
-          42.333333333333340000
+          42.333333333333330000
+          42.333333333333330000
           539.750000000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -157,7 +157,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
+          42.333333333333330000
           254.000000000000000000
           161.395833333333300000)
         Alignment = taLeftJustify
@@ -279,7 +279,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
+          42.333333333333330000
           127.000000000000000000
           121.708333333333300000)
         Alignment = taLeftJustify
@@ -310,7 +310,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
+          42.333333333333330000
           169.333333333333300000
           171.979166666666700000)
         Alignment = taLeftJustify
@@ -345,7 +345,7 @@ object frmReportProdottiRichiestiStudi: TfrmReportProdottiRichiestiStudi
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        66.145833333333340000
+        66.145833333333330000
         1899.708333333333000000)
       BandType = rbDetail
       object lblNome: TQRDBText

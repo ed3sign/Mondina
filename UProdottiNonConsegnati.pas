@@ -37,9 +37,6 @@ implementation
 
 uses dmConnection, UMessaggi, UHashTable, UReportProdottiNonConsegnati;
 
-var
-  hsAssociazioneAS: THashTable;
-
 { **************************************************************************** }
 { *** Finestra *************************************************************** }
 
@@ -78,7 +75,7 @@ procedure TfrmProdottiNonConsegnati.LoadAnni;
 begin
   cbAnni.Clear;
   cbAnni.Items.Add(' ');
-  qrQuery.SQL.Text := 'SELECT DISTINCT [Anno] FROM [Prodotti_Richiesti_Studi] ORDER BY [Anno]';
+  qrQuery.SQL.Text := 'SELECT DISTINCT [Anno] FROM [OrdiniMagazzino] ORDER BY [Anno]';
   qrQuery.Active := True;
   qrQuery.First;
   while not qrQuery.Eof do
