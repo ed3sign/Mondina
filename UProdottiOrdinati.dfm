@@ -1,6 +1,6 @@
 object frmVisProdottiOrdinati: TfrmVisProdottiOrdinati
-  Left = 440
-  Top = 145
+  Left = 132
+  Top = 83
   BorderStyle = bsDialog
   Caption = 'Prodotti Ordinati'
   ClientHeight = 576
@@ -117,33 +117,20 @@ object frmVisProdottiOrdinati: TfrmVisProdottiOrdinati
         item
           Expanded = False
           FieldName = 'Anno'
-          Width = 50
+          Width = 67
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Nome'
-          Width = 200
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'Fornitore'
-          Width = 150
+          Width = 444
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'QtaOrdinata'
           Title.Caption = 'Quantit'#224' Ordinata'
-          Width = 100
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'QtaSpesa'
-          Title.Caption = 'Quantit'#224' Spesa'
-          Width = 100
+          Width = 114
           Visible = True
         end>
     end

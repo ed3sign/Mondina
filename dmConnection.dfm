@@ -1,7 +1,7 @@
 object dmCnt: TdmCnt
   OldCreateOrder = False
-  Left = 519
-  Top = 233
+  Left = 520
+  Top = 234
   Height = 150
   Width = 215
   object AdoCnt: TADOConnection

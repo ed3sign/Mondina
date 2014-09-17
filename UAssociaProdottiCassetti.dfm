@@ -1,6 +1,6 @@
 object frmAssociaProdottiCassetti: TfrmAssociaProdottiCassetti
-  Left = 284
-  Top = 77
+  Left = 251
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Cassetti'
   ClientHeight = 745
@@ -289,9 +289,9 @@ object frmAssociaProdottiCassetti: TfrmAssociaProdottiCassetti
         Top = 88
         Width = 145
         Height = 21
-        EditLabel.Width = 114
+        EditLabel.Width = 28
         EditLabel.Height = 13
-        EditLabel.Caption = 'Codice Acquisto - Nome'
+        EditLabel.Caption = 'Nome'
         MaxLength = 60
         TabOrder = 1
         OnKeyUp = edtFiltroProdKeyUp

@@ -150,7 +150,7 @@ end;
 procedure TfrmCreaProdottoPerso.LoadProdotti;
 begin
   qrProdotti.Active := False;
-  qrProdotti.SQL.Text := 'SELECT [Codice], [Nome], [Tipologia] ' +
+  qrProdotti.SQL.Text := 'SELECT [Codice], [CodiceAcquisto], [Nome], [Tipologia] ' +
                          'FROM [Prodotti] ' +
                          'WHERE (1 = 1)';
 
@@ -160,7 +160,8 @@ begin
 
   if edtFiltroProd.Text <> EMPTYSTR then
     qrProdotti.SQL.Text := qrProdotti.SQL.Text +
-                           ' AND ([Nome] LIKE ' + QuotedStr('%' + edtFiltroProd.Text + '%') + ')';
+                           ' AND ([CodiceAcquisto] LIKE ' + QuotedStr('%' + edtFiltroProd.Text + '%') + ' OR ' +
+                           '[Nome] LIKE ' + QuotedStr('%' + edtFiltroProd.Text + '%') + ')';
 
   qrProdotti.SQL.Text := qrProdotti.SQL.Text + ' ORDER BY [Nome]';
   qrProdotti.Active := True;

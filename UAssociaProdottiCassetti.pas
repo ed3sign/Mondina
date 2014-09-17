@@ -359,12 +359,10 @@ begin
                          'WHERE (1 = 1)';
 
   if cbTipologie.ItemIndex > 0 then
-    qrProdotti.SQL.Text := qrProdotti.SQL.Text +
-                           ' AND ([Tipologia] = ' + QuotedStr(cbTipologie.Items[cbTipologie.ItemIndex]) + ')';
+    qrProdotti.SQL.Text := qrProdotti.SQL.Text + ' AND ([Tipologia] = ' + QuotedStr(cbTipologie.Items[cbTipologie.ItemIndex]) + ')';
 
   if edtFiltroProd.Text <> EMPTYSTR then
-    qrProdotti.SQL.Text := qrProdotti.SQL.Text +
-                           ' [Nome] LIKE ' + QuotedStr('%' + edtFiltroProd.Text + '%') + ')';
+    qrProdotti.SQL.Text := qrProdotti.SQL.Text + ' AND ([Nome] LIKE ' + QuotedStr('%' + edtFiltroProd.Text + '%') + ')';
 
   qrProdotti.SQL.Text := qrProdotti.SQL.Text + ' ORDER BY [Nome]';
   qrProdotti.Active := True;

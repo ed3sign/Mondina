@@ -155,7 +155,7 @@ begin
     lblProdCassSel.Caption := qrProdCassetto.FieldByName('Nome').AsString;
     btnElimina.Enabled := True;
     gbQtaMaxProd.Visible := False;
-    gbQtaMaxProdEdit.Visible := False;
+    gbQtaMaxProdEdit.Visible := True;
     lblProdSel.Caption := EMPTYSTR;
   end;
 end;

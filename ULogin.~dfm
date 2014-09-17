@@ -1,6 +1,6 @@
 object frmLogin: TfrmLogin
-  Left = 614
-  Top = 258
+  Left = 633
+  Top = 311
   BorderStyle = bsDialog
   Caption = 'Login'
   ClientHeight = 189

@@ -59,11 +59,6 @@ object frmMain: TfrmMain
         ImageIndex = 1
         OnClick = mmVisCassettiClick
       end
-      object mmVisProdotti: TMenuItem
-        Caption = 'Ricerca Prodotti'
-        ImageIndex = 2
-        OnClick = mmVisProdottiClick
-      end
       object mmVisProdottiPersi: TMenuItem
         Caption = 'Prodotti Persi'
         ImageIndex = 2

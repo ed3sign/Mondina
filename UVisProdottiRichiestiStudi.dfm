@@ -124,32 +124,25 @@ object frmVisProdottiRichiestiStudi: TfrmVisProdottiRichiestiStudi
           Expanded = False
           FieldName = 'NomeStudio'
           Title.Caption = 'Studio'
-          Width = 100
+          Width = 152
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Tipologia'
-          Width = 100
+          Width = 132
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Nome'
-          Width = 200
+          Width = 247
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'QtaRichiesta'
           Title.Caption = 'Quantit'#224' Richiesta'
-          Width = 100
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'QtaSpesa'
-          Title.Caption = 'Quantit'#224' Spesa'
           Width = 100
           Visible = True
         end>

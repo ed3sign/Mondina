@@ -80,7 +80,6 @@ begin
   mmInfo.Lines.Add('Cassetti Riforniti - Operazione Terminata');
   qrRifornisci.Active := False;
 
-  frmVisMagazzino.ResetCampi;
   frmVisMagazzino.LoadProdotti;  
 end;
 

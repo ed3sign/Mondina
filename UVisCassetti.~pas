@@ -61,7 +61,6 @@ type
     procedure GetInfoProdotto(CodProd: string; var Nome: string; var QtaMagazzino: Integer);
     procedure RiempiCassettoParz(CodCassetto, CodProd: string; QtaMagazzino: Integer);
     procedure RiempiCassettoTot(CodCassetto, CodProd: string; QtaUsata: Integer);
-    procedure RegistraRifornimento(CodCassetto, CodProd: string; QtaUsata: Integer);
   end;
 
 var
@@ -69,7 +68,7 @@ var
 
 implementation
 
-uses dmConnection, UHashTable, UMessaggi, ULogin;
+uses dmConnection, UHashTable, UMessaggi;
 
 {$R *.dfm}
 
@@ -171,7 +170,8 @@ var
   CodCassetto: string;
   NomeProd: string;
 begin
-  qrRifornisci.SQL.Text := 'SELECT * FROM [Prodotti_Cassetti] INNER JOIN [Prodotti] ON [Prodotti_Cassetti].[CodProdotto]=[Prodotti].[Codice] WHERE ([QtaUsata] > 0 AND [CodCassetto] = '+QuotedStr(lblCassettoSel.Caption)+' AND [Nome] = '+QuotedStr(lblProdottoSel.Caption)+');';
+  qrRifornisci.SQL.Text := 'SELECT * FROM [Prodotti_Cassetti] ' +
+                           'WHERE ([QtaUsata] > 0 AND CodCassetto = '+QuotedStr(lblCassettoSel.Caption)+');';
   qrRifornisci.Active := True;
   qrRifornisci.First;
   while not qrRifornisci.Eof do
@@ -196,7 +196,7 @@ begin
   end;
   ShowMessage('Cassetti Riforniti - Operazione Terminata');
   qrRifornisci.Active := False;
-  RegistraRifornimento(CodCassetto, CodProd, qtaUsata);
+
   LoadProdotti;
 end;
 
@@ -437,38 +437,13 @@ procedure TfrmVisCassetti.RiempiCassettoParz(CodCassetto, CodProd: string; QtaMa
 begin
   try
     qrQuery.SQL.Text := 'UPDATE [Prodotti_Cassetti] ' +
-                        'SET [QtaUsata] =  [QtaUsata] - ' + IntToStr(QtaMagazzino) + ' ' +
+                        'SET [QtaUsata] =  [QtaUsata] - ' + IntToStr(QtaMagazzino) + ' ' + 
                         'WHERE [CodCassetto] = ' + QuotedStr(CodCassetto) + ' AND ' +
                               '[CodProdotto] = ' + CodProd;
     qrQuery.ExecSQL;
     qrQuery.SQL.Text := 'UPDATE [Prodotti] ' +
                         'SET [QtaTotale] = 0 ' +
                         'WHERE [Codice] = ' + CodProd;
-    qrQuery.ExecSQL;
-  except
-    ShowMessage(MSG_ERRORE_SCRITTURA_DB);
-  end;
-end;
-
-procedure TfrmVisCassetti.RegistraRifornimento(CodCassetto, CodProd: string; QtaUsata: Integer);
-var username, CodMobile, CodStudio: String;
-begin
-  username := frmLogin.edtUsername.Text;
-  try
-    qrQuery.SQL.Text := 'SELECT CodMobile FROM Cassetti WHERE Codice = ' + QuotedStr(CodCassetto) + ';';
-    qrQuery.Open;
-    CodMobile := qrQuery.Fields[0].AsString;
-    ShowMessage(CodMobile);
-
-    qrQuery.SQL.Text := 'SELECT CodStudio FROM Mobili WHERE Codice = ' + QuotedStr(CodMobile) + ';';
-    qrQuery.Open;
-    CodStudio := qrQuery.Fields[0].AsString;
-    ShowMessage(CodStudio);
-
-    //ShowMessage(DateTimeToStr(Date));
-    qrQuery.SQL.Text := 'INSERT INTO [RifornimentiEmergenza] ([IdProdotto], [qta], [Utente], [Studio], [Cassetto], [Mobile], [Data]) ' +
-                        'VALUES (' + CodProd + ', ' + IntToStr(QtaUsata) +', ''' + username + ''', ''' + CodStudio + ''', ''' + CodCassetto + ''', ''' + CodMobile + ''', ''' + DateTimeToStr(Date) + ''')';
-    ShowMessage(qrQuery.SQL.Text);
     qrQuery.ExecSQL;
   except
     ShowMessage(MSG_ERRORE_SCRITTURA_DB);

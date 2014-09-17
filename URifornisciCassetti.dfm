@@ -1,6 +1,6 @@
 object frmRifornisciCassetti: TfrmRifornisciCassetti
-  Left = 394
-  Top = 274
+  Left = 449
+  Top = 117
   BorderStyle = bsDialog
   Caption = 'Rifornisci Cassetti'
   ClientHeight = 407

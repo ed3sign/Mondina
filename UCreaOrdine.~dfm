@@ -1,6 +1,6 @@
 object frmCreaOrdine: TfrmCreaOrdine
-  Left = 1000
-  Top = 201
+  Left = 990
+  Top = 225
   BorderStyle = bsDialog
   Caption = 'Ordina Prodotto'
   ClientHeight = 270

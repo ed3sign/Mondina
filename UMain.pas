@@ -47,7 +47,6 @@ type
     mmAssistentiSostituti: TMenuItem;
     mmStrumenti: TMenuItem;
     mmCompattaDB: TMenuItem;
-    mmVisProdotti: TMenuItem;
     mmReport: TMenuItem;
     mmProdPerTipologia: TMenuItem;
     mmProdOrdinati: TMenuItem;

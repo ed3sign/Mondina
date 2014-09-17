@@ -1,10 +1,10 @@
 object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
-  Left = 517
-  Top = 347
+  Left = 247
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Fornitori'
-  ClientHeight = 741
-  ClientWidth = 953
+  ClientHeight = 837
+  ClientWidth = 966
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -278,9 +278,9 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
         Top = 88
         Width = 145
         Height = 21
-        EditLabel.Width = 114
+        EditLabel.Width = 28
         EditLabel.Height = 13
-        EditLabel.Caption = 'Codice Acquisto - Nome'
+        EditLabel.Caption = 'Nome'
         MaxLength = 60
         TabOrder = 1
         OnKeyUp = edtFiltroProdKeyUp
@@ -309,7 +309,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
       Top = 668
       Width = 100
       Height = 13
-      Caption = 'Cassetto selezionato:'
+      Caption = 'Fornitore selezionato:'
     end
     object lblCassettoSel: TLabel
       Left = 120
