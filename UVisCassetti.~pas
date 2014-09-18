@@ -195,18 +195,19 @@ begin
           begin
             RiempiCassettoParz(CodCassetto, CodProd, qtaMagazzino);
             ShowMessage('Cassetto ' + CodCassetto + ' rifornito parzialmente di ' + NomeProd);
+            RegistraRifornimento(CodProd, qtaUsata);
           end
           else
           begin
             RiempiCassettoTot(CodCassetto, CodProd, qtaUsata);
             ShowMessage('Cassetto ' + CodCassetto + ' rifornito completamente di ' + NomeProd);
+            RegistraRifornimento(CodProd, qtaUsata);
           end;
         end;
       end;
       end;
 
   qrRifornisci.Active := False;
-  //RegistraRifornimento(CodProd, qtaUsata);
   LoadProdotti;
 end;
 

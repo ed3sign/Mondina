@@ -188,7 +188,7 @@ begin
 
 
       if qtaMagazzino = 0 then
-        ShowMessage('Cassetto ' + CodCassetto + ' non rifornito di ' + NomeProd +' magazzino vuoto')
+        ShowMessage('Cassetto ' + CodCassetto + ' non rifornito di ' + NomeProd + #13#10 +' MAGAZZINO VUOTO!')
       else
         begin
           if qtaUsata > qtaMagazzino then
@@ -470,17 +470,17 @@ begin
     qrQuery.SQL.Text := 'SELECT CodMobile FROM Cassetti WHERE Codice = ' + QuotedStr(CodCassetto) + ';';
     qrQuery.Open;
     CodMobile := qrQuery.Fields[0].AsString;
-    ShowMessage(CodMobile);
+    //ShowMessage(CodMobile);
 
     qrQuery.SQL.Text := 'SELECT CodStudio FROM Mobili WHERE Codice = ' + QuotedStr(CodMobile) + ';';
     qrQuery.Open;
     CodStudio := qrQuery.Fields[0].AsString;
-    ShowMessage(CodStudio);
+    //ShowMessage(CodStudio);
 
     //ShowMessage(DateTimeToStr(Date));
     qrQuery.SQL.Text := 'INSERT INTO [RifornimentiEmergenza] ([IdProdotto], [qta], [Utente], [Studio], [Cassetto], [Mobile], [Data]) ' +
                         'VALUES (' + CodProd + ', ' + IntToStr(QtaUsata) +', ''' + username + ''', ''' + CodStudio + ''', ''' + CodCassetto + ''', ''' + CodMobile + ''', ''' + DateTimeToStr(Date) + ''')';
-    ShowMessage(qrQuery.SQL.Text);
+    //ShowMessage(qrQuery.SQL.Text);
     qrQuery.ExecSQL;
   except
     ShowMessage(MSG_ERRORE_SCRITTURA_DB);
