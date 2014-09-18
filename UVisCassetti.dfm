@@ -1,6 +1,6 @@
 object frmVisCassetti: TfrmVisCassetti
-  Left = 112
-  Top = 31
+  Left = 477
+  Top = 45
   BorderStyle = bsDialog
   Caption = 'Visualizza Cassetti'
   ClientHeight = 597

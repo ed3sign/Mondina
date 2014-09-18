@@ -61,7 +61,7 @@ type
     procedure GetInfoProdotto(CodProd: string; var Nome: string; var QtaMagazzino: Integer);
     procedure RiempiCassettoParz(CodCassetto, CodProd: string; QtaMagazzino: Integer);
     procedure RiempiCassettoTot(CodCassetto, CodProd: string; QtaUsata: Integer);
-    procedure RegistraRifornimento(CodCassetto, CodProd: string; QtaUsata: Integer);
+    procedure RegistraRifornimento(CodProd: string; QtaUsata: Integer);
   end;
 
 var
@@ -117,7 +117,6 @@ begin
   lblCassettoSel.Caption := lbCassetti.Items[lbCassetti.ItemIndex];
   lblProdottoSel.Caption := EMPTYSTR;
   gbProdottoUsato.Visible := False;
-  rifEmerg.Visible := True;
 end;
 
 procedure TfrmVisCassetti.dgProdottiCellClick(Column: TColumn);
@@ -127,6 +126,7 @@ begin
     lblProdottoSel.Caption := qrProdotti.FieldByName('Nome').AsString;
     edtProdottoUsato.Text := EMPTYSTR;
     gbProdottoUsato.Visible := True;
+    rifEmerg.Visible := True;
   end;
 end;
 
@@ -171,32 +171,43 @@ var
   CodCassetto: string;
   NomeProd: string;
 begin
+  if lblProdottoSel.Caption = EMPTYSTR then ShowMessage('Selezionare un prodotto')
+  else
+  begin
   qrRifornisci.SQL.Text := 'SELECT * FROM [Prodotti_Cassetti] INNER JOIN [Prodotti] ON [Prodotti_Cassetti].[CodProdotto]=[Prodotti].[Codice] WHERE ([QtaUsata] > 0 AND [CodCassetto] = '+QuotedStr(lblCassettoSel.Caption)+' AND [Nome] = '+QuotedStr(lblProdottoSel.Caption)+');';
   qrRifornisci.Active := True;
-  qrRifornisci.First;
-  while not qrRifornisci.Eof do
-  begin
-    CodProd := qrRifornisci.FieldByName('CodProdotto').AsString;
-    CodCassetto := qrRifornisci.FieldByName('CodCassetto').AsString;
-    qtaUsata := qrRifornisci.FieldByName('QtaUsata').AsInteger;
-    GetInfoProdotto(CodProd, NomeProd, qtaMagazzino);
+  //ShowMessage(qrRifornisci.SQL.Text);
 
-    if qtaMagazzino = 0 then
-      ShowMessage('Cassetto non rifornito')
-    else
+  if qrRifornisci.isEmpty then ShowMessage('Prodotto non utilizzato')
+  else
     begin
-      if qtaUsata > qtaMagazzino then
-      begin
-        RiempiCassettoParz(CodCassetto, CodProd, qtaMagazzino);
-        ShowMessage('Cassetto ' + CodCassetto + ' rifornito parzialmente di ' + NomeProd);
-      end
-      else RiempiCassettoTot(CodCassetto, CodProd, qtaUsata);
-    end;
-    qrRifornisci.Next;
-  end;
-  ShowMessage('Cassetti Riforniti - Operazione Terminata');
+      CodProd := qrRifornisci.FieldByName('CodProdotto').AsString;
+      CodCassetto := qrRifornisci.FieldByName('CodCassetto').AsString;
+      qtaUsata := qrRifornisci.FieldByName('QtaUsata').AsInteger;
+      GetInfoProdotto(CodProd, NomeProd, qtaMagazzino);
+
+
+      if qtaMagazzino = 0 then
+        ShowMessage('Cassetto ' + CodCassetto + ' non rifornito di ' + NomeProd +' magazzino vuoto')
+      else
+        begin
+          if qtaUsata > qtaMagazzino then
+          begin
+            RiempiCassettoParz(CodCassetto, CodProd, qtaMagazzino);
+            ShowMessage('Cassetto ' + CodCassetto + ' rifornito parzialmente di ' + NomeProd);
+            RegistraRifornimento(CodProd, qtaUsata);
+          end
+          else
+          begin
+            RiempiCassettoTot(CodCassetto, CodProd, qtaUsata);
+            ShowMessage('Cassetto ' + CodCassetto + ' rifornito completamente di ' + NomeProd);
+            RegistraRifornimento(CodProd, qtaUsata);
+          end;
+        end;
+      end;
+      end;
+
   qrRifornisci.Active := False;
-  RegistraRifornimento(CodCassetto, CodProd, qtaUsata);
   LoadProdotti;
 end;
 
@@ -450,10 +461,11 @@ begin
   end;
 end;
 
-procedure TfrmVisCassetti.RegistraRifornimento(CodCassetto, CodProd: string; QtaUsata: Integer);
-var username, CodMobile, CodStudio: String;
+procedure TfrmVisCassetti.RegistraRifornimento(CodProd: string; QtaUsata: Integer);
+var username, CodMobile, CodStudio, CodCassetto: String;
 begin
   username := frmLogin.edtUsername.Text;
+  CodCassetto := lblCassettoSel.Caption;
   try
     qrQuery.SQL.Text := 'SELECT CodMobile FROM Cassetti WHERE Codice = ' + QuotedStr(CodCassetto) + ';';
     qrQuery.Open;
