@@ -1,6 +1,6 @@
 object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
-  Left = 188
-  Top = 153
+  Left = 213
+  Top = 86
   BorderStyle = bsDialog
   Caption = 'Report Prodotti Per Assistente'
   ClientHeight = 545

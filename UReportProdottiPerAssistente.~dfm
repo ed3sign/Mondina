@@ -1,6 +1,6 @@
 object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
-  Left = 331
-  Top = 165
+  Left = 188
+  Top = 153
   BorderStyle = bsDialog
   Caption = 'Report Prodotti Per Assistente'
   ClientHeight = 545
@@ -57,27 +57,14 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
       100.000000000000000000
       0.000000000000000000)
     PrinterSettings.Copies = 1
-    PrinterSettings.OutputBin = Auto
     PrinterSettings.Duplex = False
     PrinterSettings.FirstPage = 0
     PrinterSettings.LastPage = 0
-    PrinterSettings.UseStandardprinter = False
-    PrinterSettings.UseCustomBinCode = False
-    PrinterSettings.CustomBinCode = 0
-    PrinterSettings.ExtendedDuplex = 0
-    PrinterSettings.UseCustomPaperCode = False
-    PrinterSettings.CustomPaperCode = 0
-    PrinterSettings.PrintMetaFile = False
-    PrinterSettings.PrintQuality = 0
-    PrinterSettings.Collate = 0
-    PrinterSettings.ColorOption = 0
+    PrinterSettings.OutputBin = Auto
     PrintIfEmpty = True
     SnapToGrid = True
     Units = MM
     Zoom = 100
-    PrevFormStyle = fsNormal
-    PreviewInitialState = wsNormal
-    PrevInitialZoom = qrZoomToFit
     object qrbTitolo: TQRBand
       Left = 38
       Top = 38
@@ -90,14 +77,11 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = False
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
         304.270833333333300000
         2770.187500000000000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbPageHeader
       object lblInfo1: TQRLabel
         Left = 16
@@ -129,24 +113,6 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
         Transparent = False
         WordWrap = True
         FontSize = 10
-      end
-      object QRPDFShape1: TQRPDFShape
-        Left = 16
-        Top = 35
-        Width = 1009
-        Height = 5
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          13.229166666666670000
-          42.333333333333330000
-          92.604166666666670000
-          2669.645833333333000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
       end
       object lblInfo2: TQRLabel
         Left = 16
@@ -221,14 +187,11 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
       Frame.DrawRight = False
       AlignToBottom = False
       Color = clWhite
-      TransparentBand = True
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
         66.145833333333330000
         2770.187500000000000000)
-      PreCaluculateBandHeight = False
-      KeepOnOnePage = False
       BandType = rbDetail
       object lblNome: TQRDBText
         Left = 16
@@ -262,24 +225,6 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
         WordWrap = True
         FontSize = 8
       end
-      object QRPDFShape2: TQRPDFShape
-        Left = 16
-        Top = 18
-        Width = 1009
-        Height = 1
-        Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
-        Size.Values = (
-          2.645833333333333000
-          42.333333333333330000
-          47.625000000000000000
-          2669.645833333333000000)
-        VertAdjust = 0
-        ShapeType = qrsRectangle
-      end
     end
   end
   object qrProdotti: TADOQuery
@@ -305,21 +250,8 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
     Left = 14
     Top = 22
   end
-  object QRExcelFilter1: TQRExcelFilter
-    Left = 285
-    Top = 11
-  end
-  object QRPDFFilter1: TQRPDFFilter
-    CompressionOn = False
-    Left = 245
-    Top = 11
-  end
   object QRTextFilter1: TQRTextFilter
     Left = 205
     Top = 11
-  end
-  object QRRTFFilter1: TQRRTFFilter
-    Left = 322
-    Top = 13
   end
 end

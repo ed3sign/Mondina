@@ -7,10 +7,9 @@ object dmCnt: TdmCnt
   object AdoCnt: TADOConnection
     ConnectionString = 
       'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Barosi\Des' +
-      'ktop\Progetto Mondina\Database\DB_Materiale.mdb;Persist Security' +
-      ' Info=False;'
+      'ktop\Progetto Mondina\Database\DB_Materiale.mdb;Mode=Share Deny ' +
+      'None;Persist Security Info=False'
     LoginPrompt = False
-    Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
     Left = 48
     Top = 40

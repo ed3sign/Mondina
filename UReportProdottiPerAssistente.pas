@@ -109,6 +109,18 @@ begin
   qrCampi[iCampo].Left := PosX;
   qrCampi[iCampo].Width := 50;
   qrCampi[iCampo].DataSet := qrProdotti;
+  //ShowMessage(qrProdotti.Fields.Fields[iCampo+lInf].AsString);
+
+  while not qrProdotti.Eof do
+  begin
+  if qrProdotti.Fields.Fields[iCampo+lInf].AsInteger = 0 then
+  begin
+    qrProdotti.Edit;
+    qrProdotti.Fields.Fields[iCampo+lInf].Text := '';
+  end;
+  qrProdotti.Next;
+  end;
+  
   qrCampi[iCampo].DataField := qrProdotti.Fields.Fields[iCampo+lInf].DisplayName;
 
   s := qrProdotti.Fields.Fields[iCampo+lInf].DisplayName;
