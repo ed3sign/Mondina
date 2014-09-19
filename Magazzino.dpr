@@ -55,7 +55,9 @@ uses
   UVisProdottiConsegnati in 'UVisProdottiConsegnati.pas' {frmProdottiConsegnati},
   UProdottiNonConsegnati in 'UProdottiNonConsegnati.pas' {frmProdottiNonConsegnati},
   UReportProdottiNonConsegnati in 'UReportProdottiNonConsegnati.pas' {frmReportProdottiNonConsegnati},
-  UReportProdottiOrdinati in 'UReportProdottiOrdinati.pas' {frmReportProdottiOrdinati};
+  UReportProdottiOrdinati in 'UReportProdottiOrdinati.pas' {frmReportProdottiOrdinati},
+  UVisRifornimentiEmergenza in 'UVisRifornimentiEmergenza.pas' {frmRifornimentiEmergenza},
+  UReportEmergenza in 'UReportEmergenza.pas' {frmReportEmergenza};
 
 {$R *.res}
 
@@ -112,6 +114,8 @@ begin
   Application.CreateForm(TfrmProdottiNonConsegnati, frmProdottiNonConsegnati);
   Application.CreateForm(TfrmReportProdottiNonConsegnati, frmReportProdottiNonConsegnati);
   Application.CreateForm(TfrmReportProdottiOrdinati, frmReportProdottiOrdinati);
+  Application.CreateForm(TfrmRifornimentiEmergenza, frmRifornimentiEmergenza);
+  Application.CreateForm(TfrmReportEmergenza, frmReportEmergenza);
   Application.Run;
 end.
 

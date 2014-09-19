@@ -12,17 +12,12 @@ type
     qrReport: TQuickRep;
     qrbTitolo: TQRBand;
     lblInfo1: TQRLabel;
-    QRPDFShape1: TQRPDFShape;
     lblInfo2: TQRLabel;
     qrbDettagli: TQRBand;
     lblNome: TQRDBText;
-    QRPDFShape2: TQRPDFShape;
     qrProdotti: TADOQuery;
     QRSysData1: TQRSysData;
-    QRExcelFilter1: TQRExcelFilter;
-    QRPDFFilter1: TQRPDFFilter;
     QRTextFilter1: TQRTextFilter;
-    QRRTFFilter1: TQRRTFFilter;
   private
     { Private declarations }
   public
@@ -97,6 +92,7 @@ end;
 
 procedure TfrmReportProdottiPerAssistente.CreaCampo(PosX, iCampo, lInf: Integer);
 var s: string;
+var i: integer;
 begin
   qrCampi[iCampo] := TQRDBText.Create(qrbDettagli);
   qrCampi[iCampo].Parent := qrbDettagli;
@@ -109,20 +105,34 @@ begin
   qrCampi[iCampo].Left := PosX;
   qrCampi[iCampo].Width := 50;
   qrCampi[iCampo].DataSet := qrProdotti;
-  //ShowMessage(qrProdotti.Fields.Fields[iCampo+lInf].AsString);
 
-  while not qrProdotti.Eof do
+  //ShowMessage(IntToStr(iCampo) + IntToStr(lInf));
+  //ShowMessage(IntToStr(lInf));
+
+  {while not qrProdotti.Eof do
   begin
-  if qrProdotti.Fields.Fields[iCampo+lInf].AsInteger = 0 then
+    if qrProdotti.Fields.Fields[iCampo+lInf].AsInteger = 0 then
+    begin
+      qrProdotti.Fields.Fields[iCampo+lInf].Dataset.Edit;
+      //qrProdotti.FieldValues ['LastName']
+      qrProdotti.Edit;
+      qrProdotti.Fields.Fields[iCampo+lInf].Text := '';
+    end;
+  qrProdotti.DataSource.Dataset.Next;
+  end; }
+
+  for i:=1 to 91 do
   begin
-    qrProdotti.Edit;
-    qrProdotti.Fields.Fields[iCampo+lInf].Text := '';
-  end;
+    if qrProdotti.Fields.Fields[iCampo+1].AsInteger = 0 then
+    begin
+     qrProdotti.Fields.Fields[iCampo+1].Dataset.Edit;
+     qrProdotti.Fields.Fields[iCampo+1].Text:= '';
+    end;
   qrProdotti.Next;
-  end;
-  
-  qrCampi[iCampo].DataField := qrProdotti.Fields.Fields[iCampo+lInf].DisplayName;
 
+  end;
+
+  qrCampi[iCampo].DataField := qrProdotti.Fields.Fields[iCampo+lInf].DisplayName;
   s := qrProdotti.Fields.Fields[iCampo+lInf].DisplayName;
   s := StringReplace(s, '$$$', Chr(13), [rfReplaceAll]);
 

@@ -13,6 +13,7 @@ type
     gbInfo: TGroupBox;
     lblInfo2: TLabel;
     lblTitolo: TLabel;
+    Label1: TLabel;
     procedure btnOKClick(Sender: TObject);
   private
     { Private declarations }

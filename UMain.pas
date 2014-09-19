@@ -63,6 +63,7 @@ type
     mmProdottiFornitori: TMenuItem;
     mmProdottiConsegnati: TMenuItem;
     mmProdottiNonConsegnati: TMenuItem;
+    mmRifornimentiEmergenza: TMenuItem;
     procedure mmLoginClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure mmEsciClick(Sender: TObject);
@@ -102,6 +103,7 @@ type
     procedure mmProdottiFornitoriClick(Sender: TObject);
     procedure mmProdottiConsegnatiClick(Sender: TObject);
     procedure mmProdottiNonConsegnatiClick(Sender: TObject);
+    procedure mmRifornimentiEmergenzaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -128,7 +130,8 @@ uses ULogin, UDatiPersonali, UVisCassetti, UCreaProdotto,
   UVisProdottiPersiSelPagina, UVisProdottiPersi, UProdottiOrdinati,
   UVisProdottiRichiestiStudi, UProdottiRichiestiStudi, UVisOrdiniMag,
   UAssociaProdottiFornitori, UReportProdottiConsegnati,
-  UVisProdottiConsegnati, UProdottiNonConsegnati;
+  UVisProdottiConsegnati, UProdottiNonConsegnati,
+  UVisRifornimentiEmergenza;
 
 {$R *.dfm}
 
@@ -414,6 +417,11 @@ end;
 procedure TfrmMain.mmProdottiNonConsegnatiClick(Sender: TObject);
 begin
   frmProdottiNonConsegnati.ShowModal;
+end;
+
+procedure TfrmMain.mmRifornimentiEmergenzaClick(Sender: TObject);
+begin
+  frmRifornimentiEmergenza.ShowModal;
 end;
 
 { **************************************************************************** }

@@ -101,27 +101,40 @@ object frmAbout: TfrmAbout
     OnClick = btnOKClick
   end
   object gbInfo: TGroupBox
-    Left = 64
+    Left = 56
     Top = 16
-    Width = 185
+    Width = 193
     Height = 97
     TabOrder = 1
     object lblInfo2: TLabel
       Left = 14
-      Top = 60
-      Width = 98
+      Top = 44
+      Width = 86
       Height = 13
-      Caption = 'Versione 14.01.2011'
+      Caption = 'Versione 24.09.14'
     end
     object lblTitolo: TLabel
       Left = 14
-      Top = 20
+      Top = 12
       Width = 101
       Height = 24
       Caption = 'Magazzino'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 14
+      Top = 68
+      Width = 168
+      Height = 13
+      Caption = 'Made by Magalini / Gaggiano'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -8
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False

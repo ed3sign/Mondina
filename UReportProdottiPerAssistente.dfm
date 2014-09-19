@@ -1,6 +1,6 @@
 object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
-  Left = 213
-  Top = 86
+  Left = 327
+  Top = 198
   BorderStyle = bsDialog
   Caption = 'Report Prodotti Per Assistente'
   ClientHeight = 545
@@ -80,7 +80,7 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        304.270833333333300000
+        304.270833333333400000
         2770.187500000000000000)
       BandType = rbPageHeader
       object lblInfo1: TQRLabel
@@ -95,8 +95,8 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333330000
-          42.333333333333330000
+          42.333333333333340000
+          42.333333333333340000
           333.375000000000000000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -190,7 +190,7 @@ object frmReportProdottiPerAssistente: TfrmReportProdottiPerAssistente
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        66.145833333333330000
+        66.145833333333340000
         2770.187500000000000000)
       BandType = rbDetail
       object lblNome: TQRDBText
