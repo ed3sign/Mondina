@@ -3,7 +3,7 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
   Top = 59
   BorderStyle = bsDialog
   Caption = 'Associa Prodotti - Fornitori'
-  ClientHeight = 837
+  ClientHeight = 745
   ClientWidth = 966
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
