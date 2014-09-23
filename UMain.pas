@@ -181,6 +181,7 @@ begin
   begin
     mmVisualizza.Visible := True;
     mmVisMagazzino.Visible := True;
+    mmVisOrdiniMag.Visible := True;
     mmVisProdottiPersi.Visible := True;
     mmVisProdottiOrdinati.Visible := True;
     mmVisProdRichiestiStudi.Visible := True;

@@ -87,6 +87,8 @@ var
 
 procedure TfrmAssociaProdottiFornitori.FormShow(Sender: TObject);
 begin
+  gbQtaMaxProd.Visible := False;
+  gbQtaMaxProdEdit.Visible := False;
   ResetCampi;
   LoadFornitori;
   LoadProdotti;

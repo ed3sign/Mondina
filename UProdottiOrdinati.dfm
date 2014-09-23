@@ -1,6 +1,6 @@
 object frmVisProdottiOrdinati: TfrmVisProdottiOrdinati
-  Left = 132
-  Top = 83
+  Left = 198
+  Top = 109
   BorderStyle = bsDialog
   Caption = 'Prodotti Ordinati'
   ClientHeight = 576
@@ -123,7 +123,7 @@ object frmVisProdottiOrdinati: TfrmVisProdottiOrdinati
         item
           Expanded = False
           FieldName = 'Nome'
-          Width = 444
+          Width = 421
           Visible = True
         end
         item

@@ -117,19 +117,13 @@ object frmVisProdottiOrdinati: TfrmVisProdottiOrdinati
         item
           Expanded = False
           FieldName = 'Anno'
-          Width = 50
+          Width = 67
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Nome'
-          Width = 289
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'Fornitore'
-          Width = 171
+          Width = 444
           Visible = True
         end
         item

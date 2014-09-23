@@ -205,7 +205,7 @@ begin
     qrQuery.Active := True;
 
     CodProd := qrQuery.FieldByName('Codice').AsInteger;
-    ShowMessage(IntToStr(CodProd));
+    //ShowMessage(IntToStr(CodProd));
     qrQuery.SQL.Text := 'INSERT INTO [Fornitori_Prodotti] ([CodiceAcquisto], [Fornitore], [IdProdotto]) ' +
                         'VALUES (' + QuotedStr(edtCodice.Text) +', ' + QuotedStr(cbFornitori.Items[cbFornitori.ItemIndex]) + ', ' + IntToStr(CodProd) + ')';
     qrQuery.ExecSQL;

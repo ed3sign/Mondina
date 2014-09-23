@@ -421,7 +421,7 @@ end;
 
 procedure TfrmMain.mmRifornimentiEmergenzaClick(Sender: TObject);
 begin
-  frmVisRifornimentiEmergenza.ShowModal;
+  frmRifornimentiEmergenza.ShowModal;
 end;
 
 { **************************************************************************** }

@@ -335,7 +335,6 @@ object frmAssociaProdottiFornitori: TfrmAssociaProdottiFornitori
     Height = 129
     Caption = 'Modifica Codice Acquisto'
     TabOrder = 4
-    Visible = False
     object Bevel1: TBevel
       Left = 16
       Top = 56

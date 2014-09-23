@@ -97,7 +97,22 @@ begin
     if not EsisteProdotto(cbFornitori.Items[cbFornitori.ItemIndex], edtNome.Text) then
     begin
        AssociaProdottoFornitore;
-    end;
+    end
+    else
+      begin
+        try
+          qrQuery.SQL.Text := 'SELECT [Prodotti].[Codice] ' +
+                      ' FROM [Prodotti] ' +
+                      ' WHERE [Prodotti].[Nome] = ' + QuotedStr(edtNome.Text);
+          qrQuery.Active := True;
+
+          qrQuery.SQL.Text := 'UPDATE [Fornitori_Prodotti] SET [CodiceAcquisto]=' + QuotedStr(edtCodice.Text) +
+                        'WHERE ([Fornitori_Prodotti].[Fornitore] = ' + QuotedStr(cbFornitori.Items[cbFornitori.ItemIndex]) + ' AND [Fornitori_Prodotti].[IdProdotto] = ' + IntToStr(qrQuery.FieldByName('Codice').AsInteger) + ');';
+          qrQuery.ExecSQL;
+        except
+        ShowMessage(MSG_ERRORE_SCRITTURA_DB);
+      end;
+end;
     
     AddProdotto;
     ResetCampi;
@@ -185,11 +200,12 @@ var CodProd: integer;
 begin
   try
     qrQuery.SQL.Text := 'SELECT [Prodotti].[Codice] ' +
-                      ' FROM [Prodotti] INNER JOIN [Fornitori_Prodotti] ON [Prodotti].[Codice] = [Fornitori_Prodotti].[IdProdotto] ' +
+                      ' FROM [Prodotti] ' +
                       ' WHERE [Prodotti].[Nome] = ' + QuotedStr(edtNome.Text);
     qrQuery.Active := True;
 
     CodProd := qrQuery.FieldByName('Codice').AsInteger;
+    ShowMessage(IntToStr(CodProd));
     qrQuery.SQL.Text := 'INSERT INTO [Fornitori_Prodotti] ([CodiceAcquisto], [Fornitore], [IdProdotto]) ' +
                         'VALUES (' + QuotedStr(edtCodice.Text) +', ' + QuotedStr(cbFornitori.Items[cbFornitori.ItemIndex]) + ', ' + IntToStr(CodProd) + ')';
     qrQuery.ExecSQL;

@@ -174,7 +174,7 @@ end;
 procedure TfrmAssociaProdottiFornitori.btnEliminaClick(Sender: TObject);
 var res: Integer;
 begin
-  res := MessageDlg(MSG_ELIMINA_PRODOTTO, mtWarning, [mbYes, mbNo], 0);
+  res := MessageDlg('Eliminare l''Associazione?', mtWarning, [mbYes, mbNo], 0);
   if res = mrYes then
   begin
     EliminaProdotto;
