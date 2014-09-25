@@ -1,6 +1,6 @@
 object frmVisMagazzino: TfrmVisMagazzino
-  Left = 448
-  Top = 37
+  Left = 579
+  Top = 19
   BorderStyle = bsDialog
   Caption = 'Magazzino'
   ClientHeight = 629

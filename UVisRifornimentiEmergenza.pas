@@ -15,6 +15,8 @@ type
     cbAnni: TComboBox;
     lblInfo1: TLabel;
     qrQuery: TADOQuery;
+    lblInfo2: TLabel;
+    cbStudi: TComboBox;
     procedure btnReportClick(Sender: TObject);
     procedure btnChiudiClick(Sender: TObject);
     procedure FormInit(Sender: TObject);
@@ -23,6 +25,7 @@ type
   public
     { Public declarations }
     procedure LoadAnni;
+    procedure LoadStudi;
   end;
 
 var
@@ -40,6 +43,7 @@ uses dmConnection, UReportEmergenza, UMessaggi;
 procedure TfrmRifornimentiEmergenza.FormInit(Sender: TObject);
 begin
   LoadAnni;
+  LoadStudi;
   cbAnni.SetFocus;
 end;
 
@@ -47,13 +51,14 @@ end;
 { *** Componenti ************************************************************* }
 
 procedure TfrmRifornimentiEmergenza.btnReportClick(Sender: TObject);
-var Anno: string;
+var Anno, Studio: string;
 begin
-  if cbAnni.ItemIndex = 0 then ShowMessage(MSG_SELEZIONARE_ANNO)
+  if (cbAnni.ItemIndex = 0) OR (cbStudi.ItemIndex = 0)then ShowMessage('Inserisci entrambi i dati richiesti')
   else
   begin
     Anno := cbAnni.Items[cbAnni.ItemIndex];
-    frmReportEmergenza.AnteprimaReport(Anno);
+    Studio := cbStudi.Items[cbStudi.ItemIndex];
+    frmReportEmergenza.AnteprimaReport(Anno, Studio);
   end;
 end;
 
@@ -79,6 +84,22 @@ begin
   end;
   qrQuery.Active := False;
   cbAnni.ItemIndex := 0;
+end;
+
+procedure TfrmRifornimentiEmergenza.LoadStudi;
+begin
+  cbStudi.Clear;
+  cbStudi.Items.Add(' ');
+  qrQuery.SQL.Text := 'SELECT [Nome] FROM [Studi] ORDER BY [Nome]';
+  qrQuery.Active := True;
+  qrQuery.First;
+  while not qrQuery.Eof do
+  begin
+    cbStudi.Items.Add(qrQuery.FieldByName('Nome').AsString);
+    qrQuery.Next;
+  end;
+  qrQuery.Active := False;
+  cbStudi.ItemIndex := 0;
 end;
 
 end.

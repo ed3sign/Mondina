@@ -1,8 +1,8 @@
 object frmRifornimentiEmergenza: TfrmRifornimentiEmergenza
-  Left = 31
-  Top = 142
+  Left = 975
+  Top = 152
   Width = 348
-  Height = 182
+  Height = 233
   Caption = 'Rifornimenti d'#39'Emergenza'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -92,7 +92,7 @@ object frmRifornimentiEmergenza: TfrmRifornimentiEmergenza
   end
   object btnReport: TButton
     Left = 168
-    Top = 104
+    Top = 160
     Width = 75
     Height = 25
     Caption = 'Report'
@@ -101,7 +101,7 @@ object frmRifornimentiEmergenza: TfrmRifornimentiEmergenza
   end
   object btnChiudi: TButton
     Left = 248
-    Top = 104
+    Top = 160
     Width = 75
     Height = 25
     Caption = 'Chiudi'
@@ -112,7 +112,7 @@ object frmRifornimentiEmergenza: TfrmRifornimentiEmergenza
     Left = 64
     Top = 16
     Width = 257
-    Height = 81
+    Height = 137
     TabOrder = 2
     object lblInfo1: TLabel
       Left = 16
@@ -120,6 +120,13 @@ object frmRifornimentiEmergenza: TfrmRifornimentiEmergenza
       Width = 25
       Height = 13
       Caption = 'Anno'
+    end
+    object lblInfo2: TLabel
+      Left = 16
+      Top = 72
+      Width = 30
+      Height = 13
+      Caption = 'Studio'
     end
     object cbAnni: TComboBox
       Left = 16
@@ -129,6 +136,15 @@ object frmRifornimentiEmergenza: TfrmRifornimentiEmergenza
       Style = csDropDownList
       ItemHeight = 13
       TabOrder = 0
+    end
+    object cbStudi: TComboBox
+      Left = 16
+      Top = 88
+      Width = 225
+      Height = 21
+      Style = csDropDownList
+      ItemHeight = 13
+      TabOrder = 1
     end
   end
   object qrQuery: TADOQuery

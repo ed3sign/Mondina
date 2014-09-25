@@ -1,6 +1,6 @@
 object frmReportEmergenza: TfrmReportEmergenza
-  Left = 396
-  Top = 215
+  Left = 207
+  Top = 108
   Width = 1088
   Height = 563
   Caption = 'Rifornimenti Emergenza'
@@ -17,8 +17,8 @@ object frmReportEmergenza: TfrmReportEmergenza
   object qrReport: TQuickRep
     Left = 13
     Top = 9
-    Width = 900
-    Height = 900
+    Width = 794
+    Height = 1123
     Frame.Color = clBlack
     Frame.DrawTop = False
     Frame.DrawBottom = False
@@ -66,7 +66,7 @@ object frmReportEmergenza: TfrmReportEmergenza
     object qrbTitolo: TQRBand
       Left = 38
       Top = 38
-      Width = 824
+      Width = 718
       Height = 75
       Frame.Color = clBlack
       Frame.DrawTop = False
@@ -79,7 +79,7 @@ object frmReportEmergenza: TfrmReportEmergenza
       ForceNewPage = False
       Size.Values = (
         198.437500000000000000
-        2180.166666666667000000)
+        1899.708333333333000000)
       BandType = rbTitle
       object lblInfo1: TQRLabel
         Left = 16
@@ -93,8 +93,8 @@ object frmReportEmergenza: TfrmReportEmergenza
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
-          42.333333333333340000
+          42.333333333333330000
+          42.333333333333330000
           497.416666666666700000)
         Alignment = taLeftJustify
         AlignToBand = False
@@ -124,7 +124,7 @@ object frmReportEmergenza: TfrmReportEmergenza
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          42.333333333333340000
+          42.333333333333330000
           127.000000000000000000
           150.812500000000000000)
         Alignment = taLeftJustify
@@ -155,9 +155,9 @@ object frmReportEmergenza: TfrmReportEmergenza
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          529.166666666666800000
+          529.166666666666700000
           127.000000000000000000
-          60.854166666666680000)
+          60.854166666666670000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -215,9 +215,9 @@ object frmReportEmergenza: TfrmReportEmergenza
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          677.333333333333400000
+          677.333333333333300000
           127.000000000000000000
-          82.020833333333340000)
+          82.020833333333330000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -246,9 +246,9 @@ object frmReportEmergenza: TfrmReportEmergenza
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          825.500000000000100000
+          825.500000000000000000
           127.000000000000000000
-          66.145833333333340000)
+          66.145833333333330000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -277,7 +277,7 @@ object frmReportEmergenza: TfrmReportEmergenza
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          973.666666666666900000
+          973.666666666666700000
           127.000000000000000000
           113.770833333333300000)
         Alignment = taLeftJustify
@@ -331,7 +331,7 @@ object frmReportEmergenza: TfrmReportEmergenza
     object qrbDettagli: TQRBand
       Left = 38
       Top = 113
-      Width = 824
+      Width = 718
       Height = 25
       Frame.Color = clBlack
       Frame.DrawTop = False
@@ -343,8 +343,8 @@ object frmReportEmergenza: TfrmReportEmergenza
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        66.145833333333340000
-        2180.166666666667000000)
+        66.145833333333330000
+        1899.708333333333000000)
       BandType = rbDetail
       object lblNome: TQRDBText
         Left = 16

@@ -160,6 +160,7 @@ begin
 end;
 
 procedure TfrmCreaOrdine.LoadTipologie;
+var i, count: Integer;
 begin
   cbTipologia.Clear;
   qrQuery.SQL.Text := 'SELECT [Tipologia] FROM [Tipologie_Prodotti] ORDER BY [Tipologia]';
@@ -171,7 +172,15 @@ begin
     qrQuery.Next;
   end;
   qrQuery.Active := False;
-  cbTipologia.ItemIndex := -1;
+
+  count := cbTipologia.Items.Count;
+
+  //ShowMessage(cbTipologia.Items[1]);
+  for i := 0 to count do
+  begin
+   if cbTipologia.Items[i] = frmVisMagazzino.qrProdotti.FieldByName('Tipologia').AsString then
+    cbTipologia.ItemIndex := i;
+  end;
 end;
 
 

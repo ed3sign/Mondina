@@ -32,7 +32,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure AnteprimaReport(Anno: string);
+    procedure AnteprimaReport(Anno, Studio: string);
   end;
 
 var
@@ -48,7 +48,7 @@ implementation
 { **************************************************************************** }
 { *** Gestione *************************************************************** }
 
-procedure TfrmReportEmergenza.AnteprimaReport(Anno: string);
+procedure TfrmReportEmergenza.AnteprimaReport(Anno, Studio: string);
 begin
    qrProdotti.SQL.Text := 'SELECT [Prodotti].[Nome] AS Prodotto, [RifornimentiEmergenza].[qta], [RifornimentiEmergenza].[Utente], ' +
                           ' [Utenti].[Nome], [RifornimentiEmergenza].[Data], ' +
@@ -56,8 +56,7 @@ begin
                           ' INNER JOIN ([Prodotti] INNER JOIN (([Studi] INNER JOIN ([Mobili] INNER JOIN [Cassetti] ON [Mobili].[Codice] = [Cassetti].[CodMobile]) ' +
                           ' ON [Studi].[Codice] = [Mobili].[CodStudio]) INNER JOIN [RifornimentiEmergenza] ON [Cassetti].[Codice] = [RifornimentiEmergenza].[Cassetto]) ' +
                           ' ON [Prodotti].[Codice] = [RifornimentiEmergenza].[IdProdotto]) ON [Utenti].[Username] = [RifornimentiEmergenza].[Utente] ' +
-                          ' WHERE YEAR([RifornimentiEmergenza].[Data])='+anno+';';
-
+                          ' WHERE YEAR([RifornimentiEmergenza].[Data])='+anno+' AND [Studi].[Nome] = '''+ studio +''';';
 
   //ShowMessage(qrProdotti.SQL.Text);
   qrProdotti.Active := True;

@@ -1,6 +1,6 @@
 object frmVisMagazzino: TfrmVisMagazzino
-  Left = 729
-  Top = 126
+  Left = 448
+  Top = 37
   BorderStyle = bsDialog
   Caption = 'Magazzino'
   ClientHeight = 629
@@ -222,14 +222,46 @@ object frmVisMagazzino: TfrmVisMagazzino
     Visible = False
     OnClick = btnAddOrdClick
   end
-  object Button1: TButton
+  object btnChageForm: TButton
     Left = 64
     Top = 596
     Width = 100
     Height = 25
     Caption = 'Ordini Magazzino'
     TabOrder = 5
-    OnClick = Button1Click
+    OnClick = btnChageFormClick
+  end
+  object gbSottrai: TGroupBox
+    Left = 624
+    Top = 16
+    Width = 153
+    Height = 129
+    Caption = 'Sottrai Quantit'#224
+    TabOrder = 6
+    Visible = False
+    object ntbSottrai: TNumberLabeledEdit
+      Left = 16
+      Top = 48
+      Width = 121
+      Height = 21
+      EditLabel.Width = 75
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Qta da Sottrarre'
+      TabOrder = 0
+      AllowNegative = True
+      NumberType = ntDecimal
+      DecimalLength = -1
+      EnterColor = clCream
+    end
+    object btnOk: TButton
+      Left = 40
+      Top = 80
+      Width = 75
+      Height = 25
+      Caption = 'Conferma'
+      TabOrder = 1
+      OnClick = btnOkClick
+    end
   end
   object qrProdotti: TADOQuery
     Connection = dmCnt.AdoCnt

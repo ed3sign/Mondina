@@ -1,6 +1,6 @@
 object frmProdottiRichiestiStudi: TfrmProdottiRichiestiStudi
-  Left = 637
-  Top = 263
+  Left = 787
+  Top = 151
   BorderStyle = bsDialog
   Caption = 'Prodotti Richiesti dagli Studi'
   ClientHeight = 234
